@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CookPad</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_create">Creation</string>
+    <string name="title_interact">Interaction</string>
+    <string name="title_profile">Profile</string>
+</resources>
