@@ -1,18 +1,19 @@
 require('dotenv').config();
-import express from 'express';
-import initWebRoutes from './route/web';
-import connectDB from './config/connectDB';
+const express = require('express');
+const cors = require('cors');
 
-let app = express();
+const route = require('./routes');
+const connectToDatabase = require('./config/database.js');
 
+connectToDatabase();
+
+const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-initWebRoutes(app);
+route(app);
 
-connectDB();
-
-let PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
