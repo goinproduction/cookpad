@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Suu Nguyen",
+    "username": "itdev126_",
+    "password": "123456",
+    "email": "itdev.126@gmail.com",
+    "userType": 1
+}
