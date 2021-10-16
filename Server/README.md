@@ -43,3 +43,13 @@ POST http://localhost:8080/api/auth/login
     username: string
     password: string
     email: string
+    userType: boolean
+
+###### UserInfo
+
+    name: string
+    email: string
+    address: string
+    about: string
+    avatar: blob
+    cookpadId: string

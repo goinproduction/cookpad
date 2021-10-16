@@ -16,3 +16,15 @@ Content-Type: application/json
     "username": "itdev126",
     "password": "123456"
 }
+
+###
+PUT http://localhost:8080/api/auth/edit-user-info/1
+Content-Type: application/json
+
+{
+    "name" : "SN",
+    "email": "itdev.126@gmail.com",
+    "address": "Vietnam",
+    "about" : "I'm a software engineer",
+    "cookpadId": "itdev126_"
+}
