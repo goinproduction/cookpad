@@ -9,28 +9,28 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             name: {
-                type: Sequelize.STRING(50),
+                type: Sequelize.STRING,
             },
             username: {
-                type: Sequelize.STRING(15),
+                type: Sequelize.STRING,
             },
             password: {
-                type: Sequelize.STRING(50),
+                type: Sequelize.STRING,
             },
             email: {
-                type: Sequelize.STRING(50),
+                type: Sequelize.STRING,
             },
             address: {
-                type: Sequelize.STRING(255),
+                type: Sequelize.STRING,
             },
             about: {
-                type: Sequelize.STRING(255),
+                type: Sequelize.STRING,
             },
             avatar: {
                 type: Sequelize.BLOB('long'),
             },
             cookpadId: {
-                type: Sequelize.STRING(50),
+                type: Sequelize.STRING,
             },
             userType: {
                 type: Sequelize.BOOLEAN,

@@ -20,7 +20,7 @@ POST http://localhost:8080/api/auth/login
 
 # Models
 
-###### Users{
+###### Users
 
     name: string
     username: string
@@ -32,4 +32,14 @@ POST http://localhost:8080/api/auth/login
     cookpadId: string
     userType: boolean
 
-}
+###### Login
+
+    username: string
+    password: string
+
+###### Register
+
+    name: string
+    username: string
+    password: string
+    email: string
