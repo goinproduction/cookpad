@@ -32,7 +32,7 @@ module.exports = {
             cookpadId: {
                 type: Sequelize.STRING,
             },
-            userType: {
+            role: {
                 type: Sequelize.BOOLEAN,
             },
             createdAt: {
