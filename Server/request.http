@@ -6,7 +6,7 @@ Content-Type: application/json
     "username": "itdev126",
     "password": "123456",
     "email": "itdev.126@gmail.com",
-    "userType": 1
+    "role": 1
 }
 ###
 POST http://localhost:8080/api/auth/login

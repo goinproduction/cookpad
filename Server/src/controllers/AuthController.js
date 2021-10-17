@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const database = require('../models/index');
+const fs = require('fs');
+const baseUrl = `http://localhost:${process.env.PORT}/files`;
 
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
@@ -9,7 +11,7 @@ class AuthController {
     // @desc Register user
     // @access public
     async register(req, res) {
-        const { name, username, password, email, userType } = req.body;
+        const { name, username, password, email, role } = req.body;
         // Simple validation
         if (!username || !password) {
             return res.status(400).json({
@@ -27,7 +29,7 @@ class AuthController {
                 success: false,
                 message: 'Email is required',
             });
-        } else if (!userType) {
+        } else if (!role) {
             return res.status(400).json({
                 success: false,
                 message: 'User type is required',
@@ -48,7 +50,7 @@ class AuthController {
                 username,
                 password: hashedPassword,
                 email,
-                userType,
+                role,
             };
 
             await database.User.create(newUser);
@@ -115,7 +117,6 @@ class AuthController {
 
     async editUserInfo(req, res) {
         const { name, email, address, about, cookpadId } = req.body;
-
         // Simple validation
         if (!name) {
             return res.status(400).json({
@@ -133,6 +134,15 @@ class AuthController {
                 where: { id: req.params.id },
                 // raw: true,
             });
+
+            // // Avatar handling
+            // var img = fs.readFileSync(req.file.path);
+            // var encode_img = img.toString('base64');
+            // var avatar = {
+            //     contentType: req.file.mimetype,
+            //     image: new Buffer(encode_img, 'base64'),
+            // };
+
             if (user) {
                 user.name = name;
                 user.email = email;

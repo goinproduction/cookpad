@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             about: DataTypes.STRING,
             avatar: DataTypes.BLOB('long'),
             cookpadId: DataTypes.STRING,
-            userType: DataTypes.BOOLEAN,
+            role: DataTypes.BOOLEAN,
         },
         {
             sequelize,
