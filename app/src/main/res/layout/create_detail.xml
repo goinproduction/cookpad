@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/surfaceColorPrimary">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/surfaceColorPrimary">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/create_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -47,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:text="Lên Sóng"
+                    android:textColor="@color/textColorPrimary"
                     android:background="@drawable/background_button_post"
                     android:textAllCaps="false"
                     android:layout_marginEnd="8dp"/>
@@ -87,6 +87,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
                 android:hint="Tên món:"
+                android:textColorHint="@color/textColorSecond"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="16dp"
@@ -105,6 +106,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
                 android:hint="Mô tả món"
+                android:textColorHint="@color/textColorSecond"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="16dp"
@@ -122,6 +124,7 @@
                 android:layout_marginTop="36dp"
                 android:text="Khẩu phần"
                 android:textSize="20sp"
+                android:textColor="@color/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_ThemMoTaMonAn" />
 
@@ -133,6 +136,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
                 android:hint="Số lượng người"
+                android:textColorHint="@color/textColorSecond"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="10dp"
@@ -150,6 +154,7 @@
                 android:layout_marginTop="36dp"
                 android:text="Thời gian nấu"
                 android:textSize="20sp"
+                android:textColor="@color/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_text_KhauPhan" />
 
@@ -163,6 +168,7 @@
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="10dp"
+                android:textColorHint="@color/textColorSecond"
                 android:background="@drawable/back_ground_item"
                 app:layout_constraintBottom_toBottomOf="@+id/create_text_ThoiGianNau"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -179,6 +185,7 @@
                 android:layout_marginTop="36dp"
                 android:text="Nguyên liệu"
                 android:textSize="20sp"
+                android:textColor="@color/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_text_ThoiGianNau" />
             <androidx.recyclerview.widget.RecyclerView
@@ -199,6 +206,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/background_button_login"
                 android:text="+ Nguyên Liệu"
+                android:textColor="@color/textColorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rcvNguyenLieu" />
@@ -210,6 +218,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:text="Các bước thực hiện"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_button_ThemNguyenLieu" />
@@ -233,6 +242,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/background_button_login"
                 android:text="+ Bước"
+                android:textColor="@color/textColorPrimary"
                 app:layout_constraintTop_toBottomOf="@+id/rcvCachLam"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

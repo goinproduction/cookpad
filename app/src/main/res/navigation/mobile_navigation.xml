@@ -20,7 +20,20 @@
         android:id="@+id/navigation_creation"
         android:name="com.paulbaker.cookpad.feature.creation.CreationFragment"
         android:label="@string/title_create"
-        tools:layout="@layout/fragment_creation" />
+        tools:layout="@layout/fragment_creation">
+        <action
+            android:id="@+id/actionCreation"
+            app:destination="@+id/fragmentCreateDetail"/>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragmentCreateDetail"
+        android:name="com.paulbaker.cookpad.feature.creation.fragment.CreateNewFood"
+        tools:layout="@layout/create_detail" />
+
+
     <fragment
         android:id="@+id/navigation_interaction"
         android:name="com.paulbaker.cookpad.feature.interaction.InteractionFragment"
