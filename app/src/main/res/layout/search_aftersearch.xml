@@ -7,7 +7,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_aftersearch_toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -18,8 +18,8 @@
 
     <Button
         android:id="@+id/search_button_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@+id/search_aftersearch_toolbar"
         app:layout_constraintStart_toStartOf="parent"

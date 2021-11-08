@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/create_ThemAnhMonAn"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,87 +17,92 @@
 
     <EditText
         android:id="@+id/create_ThemTenMonAn"
-        android:layout_width="394dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Tên món:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_ThemAnhMonAn" />
+        app:layout_constraintTop_toBottomOf="@+id/create_ThemAnhMonAn"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/create_ThemMoTaMonAn"
-        android:layout_width="394dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Mô tả món"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_ThemTenMonAn" />
+        app:layout_constraintTop_toBottomOf="@+id/create_ThemTenMonAn"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/create_text_KhauPhan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginStart="10dp"
         android:text="Khẩu phần"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/create_ThemKhauPhan"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_ThemMoTaMonAn" />
 
     <EditText
         android:id="@+id/create_ThemKhauPhan"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Số lượng người"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_ThemMoTaMonAn" />
+        app:layout_constraintTop_toBottomOf="@+id/create_ThemMoTaMonAn"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/create_text_ThoiGianNau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginLeft="10dp"
         android:text="Thời gian nấu"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/create_ThemThoiGianNau"
-        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_text_KhauPhan" />
 
     <EditText
         android:id="@+id/create_ThemThoiGianNau"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_ThemKhauPhan" />
+        app:layout_constraintTop_toBottomOf="@+id/create_ThemKhauPhan"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/create_text_NguyenLieu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="36dp"
         android:text="Nguyên liệu"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_text_ThoiGianNau" />
 
@@ -105,29 +110,29 @@
         android:id="@+id/create_button_ThemNguyenLieu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/background_button_login"
         android:text="+ Nguyên Liệu"
-        app:layout_constraintBottom_toTopOf="@+id/create_text_Step"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_text_NguyenLieu" />
 
     <TextView
         android:id="@+id/create_text_Step"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
         android:text="Các bước thực hiện"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_text_NguyenLieu" />
+        app:layout_constraintTop_toBottomOf="@+id/create_button_ThemNguyenLieu" />
 
     <Button
         android:id="@+id/create_button_Themstep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/background_button_login"
         android:text="+ Bước"
@@ -138,7 +143,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/create_detail_toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"

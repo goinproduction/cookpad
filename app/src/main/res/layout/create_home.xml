@@ -7,9 +7,12 @@
 
     <Button
         android:id="@+id/create_button_addpost"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/create_text_addpost"
@@ -21,9 +24,11 @@
 
     <TextView
         android:id="@+id/create_text_addpost"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Thêm Bài Đăng"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

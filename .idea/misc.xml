@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/cart.xml" value="0.264" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_detail.xml" value="0.176" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_detail_material.xml" value="0.264" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_detail_step.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/event_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/item_food.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/post.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/post_material.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/post_recipe.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/search.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/search_aftersearch.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/search_item_suggest.xml" value="0.25416666666666665" />
+        <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/user_profile.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

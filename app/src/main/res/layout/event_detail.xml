@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/event_AnhEvent"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,9 +17,9 @@
 
     <TextView
         android:id="@+id/event_ThongTinEvent"
-        android:layout_width="412dp"
-        android:layout_height="476dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:text="Thông tin về sự kiện lấy từ DB"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/event_toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -43,8 +43,8 @@
 
     <Button
         android:id="@+id/event_button_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/ic_back"
         app:layout_constraintBottom_toTopOf="@+id/event_AnhEvent"
         app:layout_constraintStart_toStartOf="parent"

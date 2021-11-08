@@ -7,8 +7,12 @@
 
     <TextView
         android:id="@+id/post_material_NguyenLieuTuDB"
-        android:layout_width="350dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Nguyên liệu đổ từ DB"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
