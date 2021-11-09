@@ -2,7 +2,7 @@ package com.paulbaker.cookpad
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.paulbaker.cookpad.data.model.User
+import com.paulbaker.cookpad.data.datasource.local.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -10,7 +10,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor() : ViewModel(){
     var user = MutableLiveData<User>()
 
-    fun sendDataUser(value:User){
+    fun sendDataUser(value: User){
         this.user.value=value
     }
 }

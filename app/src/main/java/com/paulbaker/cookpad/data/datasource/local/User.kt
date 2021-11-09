@@ -1,4 +1,4 @@
-package com.paulbaker.cookpad.data.model
+package com.paulbaker.cookpad.data.datasource.local
 
 
 data class User(

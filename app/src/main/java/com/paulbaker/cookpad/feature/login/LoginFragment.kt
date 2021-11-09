@@ -23,7 +23,7 @@ import com.paulbaker.cookpad.HomeViewModel
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.SIGN_IN
-import com.paulbaker.cookpad.data.model.User
+import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment(), View.OnClickListener {
@@ -36,7 +36,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private var gso: GoogleSignInOptions?=null
     private var googleSignInClient: GoogleSignInClient?=null
     private var auth: FirebaseAuth? = null
-    private var user:User?=null
+    private var user: User?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,

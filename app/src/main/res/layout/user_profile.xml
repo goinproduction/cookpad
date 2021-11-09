@@ -10,11 +10,10 @@
         android:id="@+id/user_AnhNguoiDung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_toolbar"
-        android:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/user_toolbar" />
 
     <TextView
         android:id="@+id/user_text_TenNguoiDung"

@@ -3,6 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable-anydpi/ic_back.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/back_ground_item.xml" value="0.176" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/background_button_common.xml" value="0.2630208333333333" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/background_button_login.xml" value="0.2630208333333333" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/background_button_post.xml" value="0.2630208333333333" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_like.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/launch_screen.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/activity_main.xml" value="0.24375" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/cart.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/create_detail.xml" value="0.176" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/create_detail_material.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/create_detail_step.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/create_home.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/event_detail.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_creation.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_home.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_inspiration.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_interaction.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_kitchen_friend.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_profile.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_search.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/homepage.xml" value="0.2" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/homepage_horizontalscroll.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_food.xml" value="0.264" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_food_completed.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_test.xml" value="0.2" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post_comment.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post_material.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post_recipe.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/search.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/search_aftersearch.xml" value="0.1" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/search_item_suggest.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/search_searchfail.xml" value="0.25" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/test.xml" value="0.176" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/user_profile.xml" value="0.246875" />
         <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/cart.xml" value="0.264" />
         <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_detail.xml" value="0.176" />
         <entry key="..\:/codetime/nmcnpm/Do_AN/CNPM_Nhom20/app/src/main/res/layout/create_detail_material.xml" value="0.264" />

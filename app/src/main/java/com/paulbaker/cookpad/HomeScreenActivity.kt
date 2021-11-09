@@ -17,7 +17,7 @@ import com.google.gson.Gson
 import com.paulbaker.cookpad.core.CircleTransform
 import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.utils.Utils
-import com.paulbaker.cookpad.data.model.User
+import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.databinding.ActivityMainBinding
 import com.paulbaker.cookpad.feature.login.LoginFragment
 import com.squareup.picasso.Picasso
@@ -35,7 +35,7 @@ class HomeScreenActivity : AppCompatActivity() {
     private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
-    private var user:User?=null
+    private var user: User?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
     private fun loadUser() {
         saveUser = getSharedPreferences(DATA_USER, Context.MODE_PRIVATE)
-        loadPhotoUser(Gson().fromJson(saveUser?.getString(DATA_USER,Gson().toJson(User())),User::class.java).url)
+        loadPhotoUser(Gson().fromJson(saveUser?.getString(DATA_USER,Gson().toJson(User())), User::class.java).url)
     }
 
     private fun loadPhotoUser(url:String?){
