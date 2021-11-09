@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/surfaceColorPrimary">
 
     <TextView
         android:id="@+id/post_recipe_StepTuDB"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="10dp"
         android:text="Bước đổ từ DB"
         android:textSize="16sp"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/post_recipe_StepTuDB"
         app:layout_constraintTop_toBottomOf="@+id/post_recipe_StepTuDB"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/img_recipe_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
