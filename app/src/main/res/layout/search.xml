@@ -68,7 +68,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search_text_GoiY"
-                tools:itemCount="3" />
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="4"
+                tools:listitem="@layout/search_item_suggest"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

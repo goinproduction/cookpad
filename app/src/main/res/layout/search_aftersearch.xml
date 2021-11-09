@@ -65,7 +65,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search_after_text_KetQuaTimKiem"
-                tools:itemCount="3" />
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_food_completed"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

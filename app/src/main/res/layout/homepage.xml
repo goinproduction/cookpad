@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/homepage_toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -50,197 +50,22 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/surfaceColorPrimary">
+            android:background="#EFEFEF">
 
-            <TextView
-                android:id="@+id/homepage_text_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event Đang Diễn Ra"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="20sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homepage_scrollview_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/guideline5"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_text_event">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/surfaceColorPrimary">
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvCacEvent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="4" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
-            <TextView
-                android:id="@+id/homepage_text_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Món Mới"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="20sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_scrollview_event" />
-
-            <HorizontalScrollView
-                android:id="@+id/homepage_scrollview_new"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/guideline6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_text_new">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/surfaceColorPrimary">
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvCacMonAnMoi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="4" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
-
-            <TextView
-                android:id="@+id/homepage_text_best"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lựa chọn tuyệt vời!"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="20sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_scrollview_new" />
-
-            <HorizontalScrollView
-                android:id="@+id/homepage_scrollview_best"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/guideline7"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_text_best">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/surfaceColorPrimary">
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvCacMonAnNhieuLike"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="4" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
-
-            <TextView
-                android:id="@+id/homepage_text_most"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Các món được xem nhiều"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="20sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_scrollview_best" />
-
-            <HorizontalScrollView
-                android:id="@+id/homepage_scrollview_most"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/homepage_text_most">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/surfaceColorPrimary">
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvCacMonAnNhieuView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="4" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.25" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.75" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="4"
+                tools:listitem="@layout/homepage_horizontalscroll">
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

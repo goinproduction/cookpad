@@ -79,7 +79,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cart_text_GioDiCho"
-                tools:itemCount="3" />
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_food_completed"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

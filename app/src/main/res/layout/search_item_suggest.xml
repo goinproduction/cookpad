@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+app:cardCornerRadius="10dp"
+app:cardElevation="0dp"
+android:layout_marginTop="5dp"
+android:layout_marginBottom="5dp"
+android:layout_marginStart="5dp"
+android:layout_marginEnd="5dp"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/surfaceColorPrimary">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/search_item_suggest_AnhLoaiMonAn"
@@ -12,6 +20,8 @@
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
         android:scaleType="centerCrop"
+        android:maxHeight="180dp"
+        android:maxWidth="90dp"
         android:src="@drawable/img_recipe_placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,4 +39,6 @@
         app:layout_constraintEnd_toEndOf="@+id/search_item_suggest_AnhLoaiMonAn"
         app:layout_constraintStart_toStartOf="@+id/search_item_suggest_AnhLoaiMonAn"
         app:layout_constraintTop_toTopOf="@+id/search_item_suggest_AnhLoaiMonAn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
