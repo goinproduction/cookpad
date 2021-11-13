@@ -1,30 +1,88 @@
-POST http://localhost:8080/api/auth/register
+POST http://localhost:8080/api/user/register
 Content-Type: application/json
 
 {
-    "name": "Suu Nguyen",
-    "username": "itdev126",
-    "password": "123456",
-    "email": "itdev.126@gmail.com",
-    "userType": 1
-}
-###
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-
-{
-    "username": "itdev126",
-    "password": "123456"
+    "username": "admin",
+    "name" : "Administrator",
+    "password": "admin",
+    "role": 0
 }
 
 ###
-PUT http://localhost:8080/api/auth/edit-user-info/1
+POST http://localhost:8080/api/user/login
 Content-Type: application/json
 
 {
-    "name" : "SN",
-    "email": "itdev.126@gmail.com",
-    "address": "Vietnam",
-    "about" : "I'm a software engineer",
-    "cookpadId": "itdev126_"
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+GET http://localhost:8080/api/user/get/61879f8652370cd0a5f73e76
+
+###
+POST http://localhost:8080/api/user/edit/61879f8652370cd0a5f73e76
+Content-Type: application/json
+
+{
+    "name": "Admin",
+    "email": "admin@admin.com",
+    "about": "System Admin",
+    "cookpadId": "admin",
+    "address": "System"
+}
+
+###
+POST http://localhost:8080/api/recipe/createRecipe/61879f8652370cd0a5f73e76
+Content-Type: application/json
+
+{
+    "title": "Ga chien nuoc mam",
+    "description": "Ga chien rat la ngon",
+    "origin": "Vietnam",
+    "serves": 2,
+    "cookTime": 150,
+    "category": "Am thuc",
+    "ingredients": [{
+        "name": "500kg muoi"
+    }],
+    "steps": [{
+        "name": "Luoc ga",
+        "picture": "hihi luoc ga"
+    },
+    {
+        "name": "Chat ga",
+        "picture": "hihi chat ga"
+    }
+    ]
+}
+
+###
+GET http://localhost:8080/api/recipe/getAllRecipes
+
+###
+GET http://localhost:8080/api/recipe/getRecipe/61879f8652370cd0a5f73e76
+
+###
+POST http://localhost:8080/api/recipe/editRecipeLike/618fe5b3dd0552dcb97a2dfd
+Content-Type: application/json
+
+{
+    "likes": 50
+}
+
+###
+POST http://localhost:8080/api/recipe/editRecipeClap/618fe5b3dd0552dcb97a2dfd
+Content-Type: application/json
+
+{
+    "claps": 50
+}
+
+###
+POST http://localhost:8080/api/recipe/editRecipeHeart/618fe5b3dd0552dcb97a2dfd
+Content-Type: application/json
+
+{
+    "hearts": 50
 }

@@ -1,55 +1,153 @@
-# Run the server
+# Chạy server
 
 ```
 npm run server
 ```
 
-# APIs
+# Danh sách APIs
 
-## Register
-
-```
-POST http://localhost:8080/api/auth/register
-```
-
-## Login
+## Đăng ký
 
 ```
-POST http://localhost:8080/api/auth/login
+http://localhost:8080/api/user/register
+```
+
+## Đăng nhập
+
+```
+http://localhost:8080/api/user/login
+```
+
+## Lấy thông tin người dùng
+
+```
+http://localhost:8080/api/user/get/:userId
+```
+
+## Chỉnh sửa thông tin người dùng
+
+```
+http://localhost:8080/api/user/edit/:userId
+```
+
+## Lấy toàn bộ recipes
+
+```
+http://localhost:8080/api/recipe/getAllRecipes
+```
+
+## Lấy recipe theo userId
+
+```
+http://localhost:8080/api/recipe/getRecipe/:userId
+```
+
+## Tạo recipe
+
+```
+http://localhost:8080/api/recipe/createRecipe/:userId
+```
+
+## Cập nhật số lượng likes của recipe
+
+```
+http://localhost:8080/api/recipe/editRecipeLike/:recipeId
+```
+
+## Cập nhật số lượng claps của recipe
+
+```
+http://localhost:8080/api/recipe/editRecipeClap/:recipeId
+```
+
+## Cập nhật số lượng heart của recipe
+
+```
+http://localhost:8080/api/recipe/editRecipeClap/:recipeId
 ```
 
 # Models
 
-###### Users
+## Đăng ký
 
+```
+success: boolean
+data: [
     name: string
     username: string
     password: string
-    email: string
-    address: string
-    about: string
-    avatar: blob
-    cookpadId: string
-    userType: boolean
+    role: number (1: nguời dùng, 2: shipper)
+]
+```
 
-###### Login
+## Đăng nhập
 
-    username: string
-    password: string
+```
+username: string
+password: string
+```
 
-###### Register
+## Lấy thông tin người dùng
 
+```
+_id: string
+avatar: string
+name: string
+address: string
+about: string
+cookpadId: string
+role: number
+```
+
+## Chỉnh sửa thông tin người dùng
+
+```
+avatar: string
+name: string
+address: string
+about: string
+cookpadId: string
+role: number
+```
+
+## Lấy toàn bộ recipes
+
+```
+_id: string
+author: []
+title: string
+description: string
+origin: string
+serves: number
+cookTime: number
+dateCreate: date
+category: string
+ingredients: [{
     name: string
-    username: string
-    password: string
-    email: string
-    userType: boolean
+}]
+steps: [{
+    name: string,
+    picture: string
+}]
+likes: number
+claps: number
+hearts: number
+```
 
-###### UserInfo
+## Cập nhật số lượng likes của recipe
 
-    name: string
-    email: string
-    address: string
-    about: string
-    avatar: blob
-    cookpadId: string
+```
+hearts: string
+```
+
+## Cập nhật số lượng claps của recipe
+
+```
+claps: string
+```
+
+## Cập nhật số lượng hearts của recipe
+
+```
+hearts: string
+```
