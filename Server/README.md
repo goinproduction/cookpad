@@ -63,7 +63,7 @@ http://localhost:8080/api/recipe/editRecipeClap/:recipeId
 ## Cập nhật số lượng heart của recipe
 
 ```
-http://localhost:8080/api/recipe/editRecipeClap/:recipeId
+http://localhost:8080/api/recipe/editRecipeHeart/:recipeId
 ```
 
 # Models
