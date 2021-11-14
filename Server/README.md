@@ -71,13 +71,10 @@ http://localhost:8080/api/recipe/editRecipeHeart/:recipeId
 ## Đăng ký
 
 ```
-success: boolean
-data: [
-    name: string
-    username: string
-    password: string
-    role: number (1: nguời dùng, 2: shipper)
-]
+name: string
+username: string
+password: string
+role: number (1: nguời dùng, 2: shipper)
 ```
 
 ## Đăng nhập
