@@ -7,21 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.paulbaker.cookpad.core.extensions.Status
+import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
+import com.paulbaker.cookpad.data.datasource.local.RegisterUser
 import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
+import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 
 class HomeFragment : Fragment(), View.OnClickListener,
-    FoodHomeAdapter.SetOnItemClick{
+    FoodHomeAdapter.SetOnItemClick {
 
-    private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private var foodHomeAdapter: FoodHomeAdapter? = null
@@ -33,8 +35,6 @@ class HomeFragment : Fragment(), View.OnClickListener,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,7 +50,6 @@ class HomeFragment : Fragment(), View.OnClickListener,
 
     }
 
-
     private fun fakeData() {
         for (i in 0..10) {
             foodResponseData.add(
@@ -58,19 +57,30 @@ class HomeFragment : Fragment(), View.OnClickListener,
                     urlImageUser = "https://img-global.cpcdn.com/003_users/1921ada0286d29c3/56x56cq50/photo.jpg",
                     nameUser = "Mommy",
                     urlImageFood = "https://img-global.cpcdn.com/003_recipes/8079f3d1d2a4a803/664x470cq70/photo.jpg",
-                    nameFood= "Sayur Bayam Jagung Manis",
-                    like= "4",
+                    nameFood = "Sayur Bayam Jagung Manis",
+                    like = "4",
                     dislike = "2"
                 )
             )
         }
         for (i in 0..10) {
-            foodHomeData.add(
-                FoodHomeModel(
-                    category = "Gà chiên nước mắm",
-                    listItem = foodResponseData
+            if (i == 0) {
+                foodHomeData.add(
+                    FoodHomeModel(
+                        type = FoodHomeAdapter.typeTwoByThree,
+                        category = "Gà chiên nước mắm",
+                        listItem = foodResponseData
+                    )
                 )
-            )
+            } else {
+                foodHomeData.add(
+                    FoodHomeModel(
+                        type = FoodHomeAdapter.typeOneByTwo,
+                        category = "Gà chiên nước mắm",
+                        listItem = foodResponseData
+                    )
+                )
+            }
         }
     }
 

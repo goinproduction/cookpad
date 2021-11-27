@@ -28,14 +28,14 @@ import java.lang.Exception
 @AndroidEntryPoint
 class HomeScreenActivity : AppCompatActivity() {
 
-    companion object{
-        var saveUser: SharedPreferences?=null
+    companion object {
+        var saveUser: SharedPreferences? = null
     }
 
     private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
-    private var user: User?=null
+    private var user: User? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,43 +46,51 @@ class HomeScreenActivity : AppCompatActivity() {
         setupBottomNavigation()
         loadUser()
         observerDataUser()
-        checkLogin()
     }
 
     private fun observerDataUser() {
-        homeViewModel.user.observe(this){
-            user=it
+        homeViewModel.user.observe(this) {
+            user = it
             saveUser?.edit()?.putString(DATA_USER, Gson().toJson(user))?.apply()
             loadPhotoUser(user?.url)
+            checkLogin()
         }
     }
 
     private fun loadUser() {
         saveUser = getSharedPreferences(DATA_USER, Context.MODE_PRIVATE)
-        loadPhotoUser(Gson().fromJson(saveUser?.getString(DATA_USER,Gson().toJson(User())), User::class.java).url)
+        loadPhotoUser(
+            Gson().fromJson(
+                saveUser?.getString(DATA_USER, Gson().toJson(User())),
+                User::class.java
+            ).url
+        )
     }
 
-    private fun loadPhotoUser(url:String?){
-        if(url==null)
+    private fun loadPhotoUser(url: String?) {
+        if (url == null)
             return
-        Picasso.get().load(url).placeholder(R.drawable.ic_user_small).error(R.drawable.ic_user_small).resize(Utils.dpToPx(24),Utils.dpToPx(24)).into(object : Target{
-            override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                binding.bottomBar.menu.getItem(4).icon=BitmapDrawable(resources, CircleTransform.getCroppedBitmap(bitmap!!))
+        Picasso.get().load(url).placeholder(R.drawable.ic_user_small)
+            .error(R.drawable.ic_user_small).resize(Utils.dpToPx(24), Utils.dpToPx(24))
+            .into(object : Target {
+                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                    binding.bottomBar.menu.getItem(4).icon =
+                        BitmapDrawable(resources, CircleTransform.getCroppedBitmap(bitmap!!))
 
-            }
+                }
 
-            override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
 
-            }
+                }
 
-            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
 
-            }
-        })
+                }
+            })
     }
 
 
-    private fun setupBottomNavigation(){
+    private fun setupBottomNavigation() {
         val navView: BottomNavigationView = binding.bottomBar
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
@@ -90,7 +98,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
     private fun checkLogin() {
-        if (FirebaseAuth.getInstance().currentUser==null) {
+        if (FirebaseAuth.getInstance().currentUser == null || user?.isLogin == false) {
             showFragmentLogin()
         }
     }
@@ -101,7 +109,8 @@ class HomeScreenActivity : AppCompatActivity() {
             .commit()
         showBottomBar(View.GONE)
     }
-    fun showBottomBar(isShow:Int){
-        binding.bottomBar.visibility=isShow
+
+    fun showBottomBar(isShow: Int) {
+        binding.bottomBar.visibility = isShow
     }
 }
