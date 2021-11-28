@@ -29,7 +29,8 @@ Content-Type: application/json
     "email": "admin@admin.com",
     "about": "System Admin",
     "cookpadId": "admin",
-    "address": "System"
+    "address": "System",
+    "avatar": ""
 }
 
 ###

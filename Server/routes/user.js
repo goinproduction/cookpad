@@ -14,7 +14,6 @@ router.post("/login", authController.login);
 router.get("/get/:userId", userController.getUserInfoById);
 router.post(
   "/edit/:userId",
-  upload.single("avatar"),
   userController.updateUserInfoById
 );
 
