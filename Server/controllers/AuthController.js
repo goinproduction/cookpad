@@ -15,8 +15,14 @@ class AuthController {
       if (!user)
         return res
           .status(400)
-          .json({ success: false, message: "User not found" });
-      return res.json({ success: true, user });
+          .json({
+            success: false,
+            message: "User not found"
+          });
+      return res.json({
+        success: true,
+        user
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -30,7 +36,12 @@ class AuthController {
   // @desc Register user
   // @access public
   async register(req, res) {
-    const { username, password, name, role } = req.body;
+    const {
+      username,
+      password,
+      name,
+      role
+    } = req.body;
     if (!username || !password) {
       return res.status(400).json({
         success: false,
@@ -47,12 +58,17 @@ class AuthController {
 
     try {
       // Check for existing user
-      const user = await User.findOne({ username });
+      const user = await User.findOne({
+        username
+      });
 
       if (user)
         return res
           .status(400)
-          .json({ success: false, message: "User already exists" });
+          .json({
+            success: false,
+            message: "User already exists"
+          });
 
       const hashedPassword = bcrypt.hashSync(password, salt);
       const newUser = new User({
@@ -68,8 +84,9 @@ class AuthController {
       await newUser.save();
 
       // Return token
-      const token = jwt.sign(
-        { userId: newUser._id },
+      const token = jwt.sign({
+          userId: newUser._id
+        },
         process.env.ACCESS_TOKEN_SECRET
       );
       res.status(200).json({
@@ -89,7 +106,10 @@ class AuthController {
   // @desc Login user
   // @access public
   async login(req, res) {
-    const { username, password } = req.body;
+    const {
+      username,
+      password
+    } = req.body;
 
     // Simple validation
     if (!username || !password) {
@@ -101,7 +121,9 @@ class AuthController {
 
     try {
       // Check existing user
-      const user = await User.findOne({ username });
+      const user = await User.findOne({
+        username
+      });
       if (!user)
         return res.status(400).json({
           success: false,
@@ -118,14 +140,16 @@ class AuthController {
         });
 
       // All good
-      const token = jwt.sign(
-        { userId: user._id },
+      const token = jwt.sign({
+          userId: user._id
+        },
         process.env.ACCESS_TOKEN_SECRET
       );
       res.json({
         success: true,
         token,
         id: req._id,
+        user
       });
     } catch (error) {
       console.log(error);
