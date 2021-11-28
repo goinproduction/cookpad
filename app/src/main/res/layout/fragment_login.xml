@@ -1,142 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surfaceColorPrimary"
-    android:fillViewport="true"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/spacing_regular">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-    <ImageView
-        android:id="@+id/cookpadLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/img_cookpad_logo_horizontal" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/continueWithGoogleButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_button_login"
-        android:paddingVertical="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline3">
+        android:id="@+id/root_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/surfaceColorPrimary"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_regular">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
 
         <ImageView
-            android:id="@+id/ImgGoogle"
+            android:id="@+id/cookpadLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_google"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:text="@string/login_with_google"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ImgGoogle"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/otherOption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/continueWithGoogleButton">
-
-        <TextView
-            android:id="@+id/tvOtherOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/line2"
-            app:layout_constraintStart_toEndOf="@+id/line1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/other_option" />
-
-        <View
-            android:id="@+id/line1"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvOtherOption"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/line2"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@null"
+            android:src="@drawable/img_cookpad_logo_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvOtherOption"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerFormAccount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background_button_login"
+            android:paddingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2">
+
+            <TextView
+                android:id="@+id/tvAccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Tài khoản: "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtAccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@null"
+                android:hint="Your Account"
+                android:imeOptions="actionDone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAccount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvAccount"
+                app:layout_constraintTop_toTopOf="@+id/tvAccount" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerFormPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_button_login"
+            android:paddingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerFormAccount">
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Mật khẩu: "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@null"
+                android:hint="Your Password"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvPassword"
+                app:layout_constraintTop_toTopOf="@+id/tvPassword" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            app:layout_constraintEnd_toEndOf="@+id/containerFormPassword"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="8dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/containerFormPassword"/>
+
+
+        <TextView
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/background_button_login"
+            android:paddingHorizontal="64dp"
+            android:paddingVertical="16dp"
+            android:text="LOGIN"
+            android:textColor="@color/orange500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/otherOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin">
+
+            <TextView
+                android:id="@+id/tvOtherOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:text="@string/other_option"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/line2"
+                app:layout_constraintStart_toEndOf="@+id/line1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvOtherOption"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvOtherOption"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/continueWithGoogleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_google"
+            android:tint="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/continueWithFaceBookButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otherOption" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/continueWithFaceBookButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_facebook"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/continueWithGoogleButton"
+            app:layout_constraintEnd_toStartOf="@+id/continueWithGmailButton"
+            app:layout_constraintStart_toEndOf="@+id/continueWithGoogleButton"
+            app:layout_constraintTop_toTopOf="@+id/continueWithGoogleButton" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/continueWithGmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_email_regular"
+            app:layout_constraintBottom_toBottomOf="@+id/continueWithGoogleButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/continueWithFaceBookButton"
+            app:layout_constraintTop_toTopOf="@+id/continueWithGoogleButton" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/continueWithFaceBookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:src="@drawable/ic_facebook"
-        android:tint="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherOption" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/continueWithGmailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:src="@drawable/ic_email_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/otherOption" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>

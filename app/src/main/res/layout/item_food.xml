@@ -64,7 +64,7 @@
                 android:background="?selectableItemBackground"
                 android:maxWidth="180dp"
                 android:maxHeight="180dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/img_recipe_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
