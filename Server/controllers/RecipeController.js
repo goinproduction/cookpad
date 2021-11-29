@@ -31,6 +31,7 @@ class RecipeController {
       category,
       ingredients,
       steps,
+      image
     } = req.body;
 
     try {
@@ -44,6 +45,7 @@ class RecipeController {
         category,
         ingredients,
         steps,
+        image
       });
 
       if (await newRecipe.save()) {
@@ -62,7 +64,9 @@ class RecipeController {
 
   async getRecipeByUserId(req, res) {
     try {
-      const response = await Recipe.findOne({ author: req.params.userId })
+      const response = await Recipe.findOne({
+          author: req.params.userId
+        })
         .populate("author", "name avatar")
         .exec();
       // .populate("author")
@@ -84,12 +88,16 @@ class RecipeController {
 
   async updateLike(req, res) {
     try {
-      const { likes } = req.body;
-      let response = await Recipe.findOneAndUpdate(
-        { _id: req.params.recipeId },
-        { likes },
-        { new: true }
-      );
+      const {
+        likes
+      } = req.body;
+      let response = await Recipe.findOneAndUpdate({
+        _id: req.params.recipeId
+      }, {
+        likes
+      }, {
+        new: true
+      });
       if (response) {
         return res.status(200).json({
           success: true,
@@ -110,12 +118,16 @@ class RecipeController {
 
   async updateHeart(req, res) {
     try {
-      const { hearts } = req.body;
-      let response = await Recipe.findOneAndUpdate(
-        { _id: req.params.recipeId },
-        { hearts },
-        { new: true }
-      );
+      const {
+        hearts
+      } = req.body;
+      let response = await Recipe.findOneAndUpdate({
+        _id: req.params.recipeId
+      }, {
+        hearts
+      }, {
+        new: true
+      });
       if (response) {
         return res.status(200).json({
           success: true,
@@ -136,12 +148,16 @@ class RecipeController {
 
   async updateClap(req, res) {
     try {
-      const { claps } = req.body;
-      let response = await Recipe.findOneAndUpdate(
-        { _id: req.params.recipeId },
-        { claps },
-        { new: true }
-      );
+      const {
+        claps
+      } = req.body;
+      let response = await Recipe.findOneAndUpdate({
+        _id: req.params.recipeId
+      }, {
+        claps
+      }, {
+        new: true
+      });
       if (response) {
         return res.status(200).json({
           success: true,
