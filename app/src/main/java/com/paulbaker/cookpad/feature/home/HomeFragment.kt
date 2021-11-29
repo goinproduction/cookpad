@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import com.paulbaker.cookpad.HomeScreenActivity
+import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
@@ -17,6 +20,7 @@ import com.paulbaker.cookpad.data.datasource.local.RegisterUser
 import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
+import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 
 class HomeFragment : Fragment(), View.OnClickListener,
@@ -29,6 +33,8 @@ class HomeFragment : Fragment(), View.OnClickListener,
     private var foodHomeAdapter: FoodHomeAdapter? = null
     private val foodHomeData = mutableListOf<FoodHomeModel>()
     private val foodResponseData = mutableListOf<FoodResponse>()
+
+    private val productViewModel: ProductViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +50,34 @@ class HomeFragment : Fragment(), View.OnClickListener,
         setupListener()
         fakeData()
         setupAdapter()
+        getAllRecipes()
+    }
+
+    private fun getAllRecipes() {
+        productViewModel.getAllRecipes().observe(viewLifecycleOwner) { resourceResponse ->
+            resourceResponse.let { resources ->
+                when (resources.status) {
+                    Status.LOADING -> {
+                        binding.rootHome.isClickable = false
+                        binding.pbLoading.visibility = View.VISIBLE
+                    }
+                    Status.SUCCESS -> {
+                        if (resources.data?.body()?.success == true) {
+                            binding.pbLoading.visibility = View.GONE
+                            binding.rootHome.isClickable = true
+                        } else {
+                            binding.pbLoading.visibility = View.GONE
+                            binding.rootHome.isClickable = true
+                        }
+                    }
+                    Status.ERROR -> {
+                        binding.rootHome.isClickable = true
+                        binding.pbLoading.visibility = View.GONE
+                        Log.d("TAG", "error message: ${resources.message}")
+                    }
+                }
+            }
+        }
     }
 
     private fun setupListener() {

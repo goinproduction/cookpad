@@ -8,6 +8,9 @@ data class User(
     var password: String? = null,
     var email: String? = null,
     var url: String? = null,
-    var role: Int = 0,
+    var address: String? = null,
+    var about: String? = null,
+    var cookPadId: String? = null,
+    var role: Int? = 0,
     var isLogin: Boolean = false
 )

@@ -1,6 +1,8 @@
 package com.paulbaker.cookpad.feature.login
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
-import com.paulbaker.cookpad.core.platform.BottomSheetFullScreen
 import com.paulbaker.cookpad.data.datasource.local.RegisterUser
 import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.databinding.FragmentRegisterBinding
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
+import com.paulbaker.library.core.widget.BottomSheetFullScreen
 
 class BottomSheetRegister(val callback: RegisterCallBack) : BottomSheetFullScreen(),
     View.OnClickListener {
@@ -40,6 +42,55 @@ class BottomSheetRegister(val callback: RegisterCallBack) : BottomSheetFullScree
     private fun setupListener() {
         binding.btnRegister.setOnClickListener(this)
         binding.btnClose.setOnClickListener(this)
+        setupTextWatch()
+    }
+
+    private fun setupTextWatch() {
+        binding.edtInputName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                binding.btnRegister.isEnabled =
+                    binding.edtInputName.text.isNotEmpty() && binding.edtInputAccount.text.isNotEmpty()
+                            && binding.edtInputPassword.text.isNotEmpty()
+            }
+        })
+        binding.edtInputAccount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                binding.btnRegister.isEnabled =
+                    binding.edtInputName.text.isNotEmpty() && binding.edtInputAccount.text.isNotEmpty()
+                            && binding.edtInputPassword.text.isNotEmpty()
+            }
+        })
+        binding.edtInputPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                binding.btnRegister.isEnabled =
+                    binding.edtInputName.text.isNotEmpty() && binding.edtInputAccount.text.isNotEmpty()
+                            && binding.edtInputPassword.text.isNotEmpty()
+            }
+        })
     }
 
     override fun onClick(v: View?) {

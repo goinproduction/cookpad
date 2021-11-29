@@ -46,6 +46,7 @@ class HomeScreenActivity : AppCompatActivity() {
         setupBottomNavigation()
         loadUser()
         observerDataUser()
+        checkLogin()
     }
 
     private fun observerDataUser() {
@@ -53,7 +54,6 @@ class HomeScreenActivity : AppCompatActivity() {
             user = it
             saveUser?.edit()?.putString(DATA_USER, Gson().toJson(user))?.apply()
             loadPhotoUser(user?.url)
-            checkLogin()
         }
     }
 
@@ -68,7 +68,7 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     private fun loadPhotoUser(url: String?) {
-        if (url == null)
+        if (url == null || url.isEmpty() || url.isBlank())
             return
         Picasso.get().load(url).placeholder(R.drawable.ic_user_small)
             .error(R.drawable.ic_user_small).resize(Utils.dpToPx(24), Utils.dpToPx(24))
@@ -98,7 +98,10 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
     private fun checkLogin() {
-        if (FirebaseAuth.getInstance().currentUser == null || user?.isLogin == false) {
+        val isLogin = !Gson().fromJson(
+            saveUser?.getString(DATA_USER, Gson().toJson(User())), User::class.java
+        ).isLogin
+        if (FirebaseAuth.getInstance().currentUser == null && isLogin) {
             showFragmentLogin()
         }
     }

@@ -43,6 +43,14 @@
         android:id="@+id/navigation_profile"
         android:name="com.paulbaker.cookpad.feature.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actionOpenGallery"
+            app:destination="@+id/fragmentGallery"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top"/>
+    </fragment>
 
 </navigation>

@@ -11,6 +11,21 @@
     <string name="login_with_google">Đăng nhập bằng Google</string>
     <string name="other_option">Lựa chọn khác</string>
     <string name="test">Xuất phiếu đi chợ</string>
+    <string name="account">Tài khoản:</string>
+    <string name="password">Mật khẩu:</string>
+    <string name="hint_account">Nhập tài khoản của bạn</string>
+    <string name="hint_password">Nhập mật khẩu của bạn</string>
+    <string name="register">Đăng ký</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="enter_your_name" translatable="false">Nhập tên của bạn</string>
+    <string name="cookpad_id" translatable="false">/@long1999</string>
+    <string name="about">Vài dòng về bạn và đam mê nấu nướng</string>
+    <string name="from">Bạn đến từ ?</string>
+    <string name="address">Địa chỉ</string>
+    <string name="id_user">ID người dùng</string>
+    <string name="user_name">Tên người dùng</string>
+    <string name="update">Cập Nhập</string>
+    <string name="titleAbout">Thông tin cơ bản</string>
 
     <string-array name="role">
         <item>Người dùng</item>

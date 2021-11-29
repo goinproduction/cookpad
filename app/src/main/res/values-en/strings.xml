@@ -12,4 +12,19 @@
     <string name="login_with_google">Đăng nhập bằng Google</string>
     <string name="other_option">Lựa chọn khác</string>
     <string name="test">abcxyz</string>
+    <string name="account">Account:</string>
+    <string name="password">Password:</string>
+    <string name="hint_account">Your Account</string>
+    <string name="hint_password">Your Password</string>
+    <string name="register">Register</string>
+    <string name="login">LOGIN</string>
+
+    <string name="about">A few lines about you and your passion for cooking</string>
+    <string name="from">Where are you from ?</string>
+    <string name="address">Address</string>
+    <string name="id_user">ID User</string>
+    <string name="user_name">User name</string>
+    <string name="update">Update</string>
+    <string name="titleAbout">About</string>
+
 </resources>

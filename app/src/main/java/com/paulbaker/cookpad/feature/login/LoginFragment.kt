@@ -1,12 +1,12 @@
 package com.paulbaker.cookpad.feature.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
@@ -34,7 +34,9 @@ import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.databinding.FragmentLoginBinding
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 
-class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.RegisterCallBack {
+class LoginFragment : Fragment(), View.OnClickListener,
+    BottomSheetRegister.RegisterCallBack,
+    View.OnTouchListener {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -46,6 +48,9 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
     private var googleSignInClient: GoogleSignInClient? = null
     private var auth: FirebaseAuth? = null
     private var user: User? = null
+
+    private var startClickTime = 0L
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,18 +64,53 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupListener()
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupListener() {
         binding.continueWithGoogleButton.setOnClickListener(this)
         binding.btnRegister.setOnClickListener(this)
         binding.btnLogin.setOnClickListener(this)
         binding.edtPassword.setOnEditorActionListener { v: TextView?, actionId: Int, event: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                binding.btnLogin.performClick()
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                loginUser()
             }
             true
         }
+        setupTextWatch()
+        binding.rootLogin.setOnTouchListener(this)
+    }
+
+    private fun setupTextWatch() {
+        binding.edtAccount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                binding.btnLogin.isEnabled =
+                    binding.edtAccount.text.isNotEmpty() && binding.edtPassword.text.isNotEmpty()
+            }
+        })
+        binding.edtPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                binding.btnLogin.isEnabled =
+                    binding.edtAccount.text.isNotEmpty() && binding.edtPassword.text.isNotEmpty()
+            }
+        })
     }
 
     override fun onClick(v: View?) {
@@ -89,6 +129,7 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
     }
 
     private fun loginUser() {
+        Utils.hideKeyboard(requireContext(), binding.edtPassword)
         if (binding.edtAccount.text.isNotEmpty() && binding.edtPassword.text.isNotEmpty())
             userViewModel.loginUser(
                 RegisterUser(
@@ -104,15 +145,27 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
                         }
                         Status.SUCCESS -> {
                             if (resources.data?.body()?.success == true) {
+                                val data = resources.data.body()
                                 binding.pbLoading.visibility = View.GONE
                                 binding.rootLogin.isClickable = true
-                                (activity as? HomeScreenActivity)?.supportFragmentManager?.beginTransaction()
-                                    ?.remove(this)?.commit()
                                 Utils.hideKeyboard(requireActivity(), binding.edtPassword)
-                                user?.isLogin = true
+                                user = User(
+                                    id = data?.user?.id,
+                                    name = data?.user?.name,
+                                    username = data?.user?.username,
+                                    password = data?.user?.password,
+                                    url = data?.user?.avatar,
+                                    address = data?.user?.address,
+                                    about = data?.user?.about,
+                                    cookPadId = data?.user?.cookpadId,
+                                    role = data?.user?.role,
+                                    isLogin = true
+                                )
                                 homeViewModel.sendDataUser(user!!)
                                 HomeScreenActivity.saveUser?.edit()
                                     ?.putString(DATA_USER, Gson().toJson(user))?.apply()
+                                (activity as? HomeScreenActivity)?.supportFragmentManager?.beginTransaction()
+                                    ?.remove(this)?.commit()
                             } else {
                                 binding.pbLoading.visibility = View.GONE
                                 binding.rootLogin.isClickable = true
@@ -219,7 +272,7 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
     override fun onSuccess(user: User) {
         binding.edtAccount.setText(user.username)
         binding.edtPassword.setText(user.password)
-        binding.btnLogin.performClick()
+        binding.btnLogin.callOnClick()
         this.user = User(
             name = user.name,
             email = user.username,
@@ -230,5 +283,18 @@ class LoginFragment : Fragment(), View.OnClickListener, BottomSheetRegister.Regi
 
     override fun onError(message: String?) {
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        if (event?.action == MotionEvent.ACTION_DOWN) {
+            startClickTime = System.currentTimeMillis()
+        } else if (event?.action == MotionEvent.ACTION_UP) {
+            if (System.currentTimeMillis() - startClickTime < ViewConfiguration.getTapTimeout()) {
+                Utils.hideKeyboard(requireContext(), binding.edtPassword)
+                activity?.window?.decorView?.clearFocus()
+            }
+        }
+        return true
     }
 }

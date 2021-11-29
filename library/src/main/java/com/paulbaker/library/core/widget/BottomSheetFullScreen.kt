@@ -1,4 +1,4 @@
-package com.paulbaker.cookpad.core.platform
+package com.paulbaker.library.core.widget
 
 import android.app.Dialog
 import android.os.Bundle

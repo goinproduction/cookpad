@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel(){
-    var user = MutableLiveData<User>()
+    val user = MutableLiveData<User>()
 
     fun sendDataUser(value: User){
         this.user.value=value
