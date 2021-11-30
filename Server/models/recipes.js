@@ -10,7 +10,9 @@ const recipeSchema = new Schema({
     type: String,
   },
   image: {
+    data: Buffer,
     type: String,
+    default: ""
   },
   description: {
     type: String,
@@ -31,17 +33,17 @@ const recipeSchema = new Schema({
   category: {
     type: String,
   },
-  ingredients: [
-    {
-      name: String,
+  ingredients: [String],
+  steps: [{
+    name: {
+      type: String
     },
-  ],
-  steps: [
-    {
-      name: String,
-      picture: String,
+    picture: {
+      data: Buffer,
+      type: String,
+      default: ""
     },
-  ],
+  }, ],
   likes: {
     type: Number,
     default: 0,

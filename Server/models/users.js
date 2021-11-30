@@ -11,9 +11,13 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+  },
   avatar: {
     data: Buffer,
     type: String,
+    default: ""
   },
   name: {
     type: String,
