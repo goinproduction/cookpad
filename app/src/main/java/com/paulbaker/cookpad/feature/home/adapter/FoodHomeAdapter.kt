@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
 import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
+import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.ItemFoodBinding
 import com.paulbaker.cookpad.databinding.ItemFoodHomeBinding
 import com.squareup.picasso.Picasso
@@ -73,7 +74,8 @@ class FoodHomeAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(item: FoodHomeModel) {
-            val childAdapter = ChildFoodHomeAdapter(context, item.listItem, clickItem, item.type)
+            val childAdapter =
+                ChildFoodHomeAdapter(context, item.item?.toMutableList(), clickItem, item.type)
             binding.rcvMonAnHomePage.adapter = childAdapter
             binding.rcvMonAnHomePage.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -85,7 +87,8 @@ class FoodHomeAdapter(
     inner class TwoByThreeWidthViewHolder(val binding: ItemFoodHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(item: FoodHomeModel) {
-            val childAdapter = ChildFoodHomeAdapter(context, item.listItem, clickItem, item.type)
+            val childAdapter =
+                ChildFoodHomeAdapter(context, item.item?.toMutableList(), clickItem, item.type)
             binding.rcvMonAnHomePage.adapter = childAdapter
             binding.rcvMonAnHomePage.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -94,7 +97,7 @@ class FoodHomeAdapter(
     }
 
     interface SetOnItemClick {
-        fun onItemClick(view: View, item: FoodResponse?)
+        fun onItemClick(view: View, item: RecipesResponse.Data?)
     }
 
 }

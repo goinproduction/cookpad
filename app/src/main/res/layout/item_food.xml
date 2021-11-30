@@ -1,135 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingVertical="8dp"
-    android:paddingEnd="8dp"
-    android:background="@color/surfaceColorPrimary">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageUserPost"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_facebook"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        >
 
-    <TextView
-        android:id="@+id/item_food_text_NguoiDang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tên Người Đăng"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="12sp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/imageUserPost"
-        app:layout_constraintTop_toTopOf="@+id/imageUserPost"
-        app:layout_constraintBottom_toBottomOf="@+id/imageUserPost"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageUserPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_facebook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/btnOptions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_options"
-        app:layout_constraintBottom_toBottomOf="@+id/item_food_text_NguoiDang"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/item_food_text_NguoiDang"
-        app:layout_constraintTop_toTopOf="@+id/item_food_text_NguoiDang" />
+        <TextView
+            android:id="@+id/item_food_text_NguoiDang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="5dp"
+            android:text="Tên Người Đăng"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageUserPost"
+            app:layout_constraintStart_toEndOf="@+id/imageUserPost"
+            app:layout_constraintTop_toTopOf="@+id/imageUserPost" />
+
+        <ImageView
+            android:id="@+id/btnOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_options"
+            app:layout_constraintBottom_toBottomOf="@+id/item_food_text_NguoiDang"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/item_food_text_NguoiDang"
+            app:layout_constraintTop_toTopOf="@+id/item_food_text_NguoiDang" />
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageUserPost"
-        app:layout_constraintStart_toStartOf="@+id/imageUserPost"
-        android:layout_marginTop="8dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/imageUserPost"
+            app:layout_constraintTop_toBottomOf="@+id/imageUserPost">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/surfaceColorPrimary">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/surfaceColorPrimary">
 
-            <ImageView
-                android:id="@+id/item_food_AnhDaiDienMonAn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?selectableItemBackground"
-                android:maxWidth="180dp"
-                android:maxHeight="180dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/img_recipe_placeholder"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/item_food_AnhDaiDienMonAn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_recipe_placeholder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius_top_left="8dp"
+                    app:riv_corner_radius_top_right="8dp"/>
 
-            <TextView
-                android:id="@+id/item_food_TenMonAn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Ten Mon An"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_food_AnhDaiDienMonAn" />
+                <TextView
+                    android:id="@+id/item_food_TenMonAn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Ten Mon An"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_food_AnhDaiDienMonAn" />
 
-            <ImageView
-                android:id="@+id/item_food_button_Like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="?selectableItemBackground"
-                android:src="@drawable/ic_like"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_food_TenMonAn"
-                app:layout_constraintVertical_bias="0.0" />
+                <LinearLayout
+                    android:id="@+id/containerLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_conner_item_statistic"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="1dp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/item_food_TenMonAn"
+                    app:layout_constraintTop_toBottomOf="@+id/item_food_TenMonAn">
 
-            <ImageView
-                android:id="@+id/item_food_button_DisLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="?selectableItemBackground"
-                android:src="@android:drawable/ic_delete"
-                app:layout_constraintBottom_toBottomOf="@+id/item_food_text_SoLuongLike"
-                app:layout_constraintStart_toEndOf="@+id/item_food_text_SoLuongLike"
-                app:layout_constraintTop_toTopOf="@+id/item_food_text_SoLuongLike" />
+                    <ImageView
+                        android:id="@+id/btnLike"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="?selectableItemBackground"
+                        android:src="@drawable/ic_like" />
 
-            <TextView
-                android:id="@+id/item_food_text_SoLuongLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="NL"
-                android:textColor="@color/textColorPrimary"
-                app:layout_constraintBottom_toBottomOf="@+id/item_food_button_Like"
-                app:layout_constraintStart_toEndOf="@+id/item_food_button_Like"
-                app:layout_constraintTop_toTopOf="@+id/item_food_button_Like" />
+                    <TextView
+                        android:id="@+id/tvLikeCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="5"
+                        android:textColor="@color/textColorSecond"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/item_food_text_SoLuongDisLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="NDL"
-                android:textColor="@color/textColorPrimary"
-                app:layout_constraintBottom_toBottomOf="@+id/item_food_button_DisLike"
-                app:layout_constraintStart_toEndOf="@+id/item_food_button_DisLike"
-                app:layout_constraintTop_toTopOf="@+id/item_food_button_DisLike" />
+                <LinearLayout
+                    android:id="@+id/containerEmotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_conner_item_statistic"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="1dp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/containerLike"
+                    app:layout_constraintTop_toBottomOf="@+id/item_food_TenMonAn">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/btnEmotion"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="?selectableItemBackground"
+                        android:src="@drawable/ic_emotion" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tvEmotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="5"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_conner_item_statistic"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="1dp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/containerEmotion"
+                    app:layout_constraintTop_toBottomOf="@+id/item_food_TenMonAn">
+
+                    <ImageView
+                        android:id="@+id/btnFavorite"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="?selectableItemBackground"
+                        android:src="@drawable/ic_favorite" />
+
+                    <TextView
+                        android:id="@+id/tvFavorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="5"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

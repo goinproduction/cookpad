@@ -39,7 +39,9 @@ data class RecipesResponse(
         @SerializedName("title")
         val title: String?,
         @SerializedName("__v")
-        val v: Int?
+        val v: Int?,
+        @SerializedName("image")
+        val image:String?
     ) {
         data class Author(
             @SerializedName("avatar")

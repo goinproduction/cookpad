@@ -7,4 +7,6 @@ import retrofit2.http.GET
 interface ProductApi {
     @GET("api/recipe/getAllRecipes")
     suspend fun getAllRecipes() : Response<RecipesResponse>
+
+
 }

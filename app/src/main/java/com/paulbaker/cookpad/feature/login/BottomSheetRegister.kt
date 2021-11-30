@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.google.gson.Gson
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.data.datasource.local.RegisterUser
 import com.paulbaker.cookpad.data.datasource.local.User
+import com.paulbaker.cookpad.data.datasource.remote.RegisterResponse
 import com.paulbaker.cookpad.databinding.FragmentRegisterBinding
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 import com.paulbaker.library.core.widget.BottomSheetFullScreen
@@ -138,13 +140,26 @@ class BottomSheetRegister(val callback: RegisterCallBack) : BottomSheetFullScree
                         } else {
                             binding.pbLoading.visibility = View.GONE
                             binding.rootRegister.isClickable = true
-                            Toast.makeText(activity, "${resources.message}", Toast.LENGTH_LONG)
+                            Toast.makeText(
+                                activity,
+                                "${
+                                    Gson().fromJson(
+                                        resources.data?.errorBody()?.string(),
+                                        RegisterResponse::class.java
+                                    ).message
+                                }",
+                                Toast.LENGTH_LONG
+                            )
                                 .show()
                         }
                     }
                     Status.ERROR -> {
                         binding.rootRegister.isClickable = true
-                        Toast.makeText(activity, "${resources.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            activity,
+                            "${resources.data?.errorBody()?.string()}",
+                            Toast.LENGTH_LONG
+                        ).show()
                         Log.d("TAG", "error message: ${resources.message}")
                     }
                 }

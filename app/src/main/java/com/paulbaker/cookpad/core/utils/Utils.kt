@@ -7,15 +7,20 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
+import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
+import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
 
 class Utils {
-    companion object{
-        fun dpToPx(dp:Int):Int{
+    companion object {
+        fun dpToPx(dp: Int): Int {
             return (dp * Resources.getSystem().displayMetrics.density).toInt()
         }
-        fun pxToDp(px:Int):Int{
+
+        fun pxToDp(px: Int): Int {
             return (px / Resources.getSystem().displayMetrics.density).toInt()
         }
+
         fun showKeyboard(ctx: Context, editText: EditText?) {
             val imm = ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED)
@@ -37,6 +42,31 @@ class Utils {
             val resources: Resources = context.resources
             val metrics: DisplayMetrics = resources.displayMetrics
             return metrics.widthPixels
+        }
+
+        fun groupFoodByCategory(data: MutableList<RecipesResponse.Data?>?): MutableList<FoodHomeModel> {
+            val listFood: MutableList<FoodHomeModel> = mutableListOf()
+            val listFoodGroup = data?.groupBy { it?.category }
+            listFoodGroup?.entries?.forEachIndexed { index, entry ->
+                if (index == 0) {
+                    listFood.add(
+                        FoodHomeModel(
+                            type = FoodHomeAdapter.typeTwoByThree,
+                            category = entry.key,
+                            item = entry.value
+                        )
+                    )
+                } else {
+                    listFood.add(
+                        FoodHomeModel(
+                            type = FoodHomeAdapter.typeOneByTwo,
+                            category = entry.key,
+                            item = entry.value
+                        )
+                    )
+                }
+            }
+            return listFood
         }
     }
 }

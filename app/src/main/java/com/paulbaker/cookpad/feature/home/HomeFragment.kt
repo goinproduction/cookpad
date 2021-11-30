@@ -1,5 +1,6 @@
 package com.paulbaker.cookpad.feature.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,20 +9,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.paulbaker.cookpad.HomeScreenActivity
-import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
-import com.paulbaker.cookpad.data.datasource.local.RegisterUser
 import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
+import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
 import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
-import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 
 class HomeFragment : Fragment(), View.OnClickListener,
     FoodHomeAdapter.SetOnItemClick {
@@ -32,7 +28,6 @@ class HomeFragment : Fragment(), View.OnClickListener,
 
     private var foodHomeAdapter: FoodHomeAdapter? = null
     private val foodHomeData = mutableListOf<FoodHomeModel>()
-    private val foodResponseData = mutableListOf<FoodResponse>()
 
     private val productViewModel: ProductViewModel by activityViewModels()
 
@@ -48,7 +43,6 @@ class HomeFragment : Fragment(), View.OnClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupListener()
-        fakeData()
         setupAdapter()
         getAllRecipes()
     }
@@ -65,6 +59,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
                         if (resources.data?.body()?.success == true) {
                             binding.pbLoading.visibility = View.GONE
                             binding.rootHome.isClickable = true
+                            updateFoodHome(resources.data.body()!!.data?.toMutableList())
                         } else {
                             binding.pbLoading.visibility = View.GONE
                             binding.rootHome.isClickable = true
@@ -80,42 +75,15 @@ class HomeFragment : Fragment(), View.OnClickListener,
         }
     }
 
-    private fun setupListener() {
-
+    @SuppressLint("NotifyDataSetChanged")
+    private fun updateFoodHome(foodResponseData: MutableList<RecipesResponse.Data?>?) {
+        foodHomeData.clear()
+        foodHomeData.addAll(Utils.groupFoodByCategory(foodResponseData))
+        foodHomeAdapter?.notifyDataSetChanged()
     }
 
-    private fun fakeData() {
-        for (i in 0..10) {
-            foodResponseData.add(
-                FoodResponse(
-                    urlImageUser = "https://img-global.cpcdn.com/003_users/1921ada0286d29c3/56x56cq50/photo.jpg",
-                    nameUser = "Mommy",
-                    urlImageFood = "https://img-global.cpcdn.com/003_recipes/8079f3d1d2a4a803/664x470cq70/photo.jpg",
-                    nameFood = "Sayur Bayam Jagung Manis",
-                    like = "4",
-                    dislike = "2"
-                )
-            )
-        }
-        for (i in 0..10) {
-            if (i == 0) {
-                foodHomeData.add(
-                    FoodHomeModel(
-                        type = FoodHomeAdapter.typeTwoByThree,
-                        category = "Gà chiên nước mắm",
-                        listItem = foodResponseData
-                    )
-                )
-            } else {
-                foodHomeData.add(
-                    FoodHomeModel(
-                        type = FoodHomeAdapter.typeOneByTwo,
-                        category = "Gà chiên nước mắm",
-                        listItem = foodResponseData
-                    )
-                )
-            }
-        }
+    private fun setupListener() {
+
     }
 
     private fun setupAdapter() {
@@ -125,9 +93,8 @@ class HomeFragment : Fragment(), View.OnClickListener,
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
-    override fun onItemClick(view: View, item: FoodResponse?) {
-        Log.d("TAG", "onItemClick: ${item?.nameFood}")
-        Toast.makeText(requireContext(), "Mày vừa nhấn vào cái hình", Toast.LENGTH_SHORT).show()
+    override fun onItemClick(view: View, item: RecipesResponse.Data?) {
+        Log.d("TAG", "onItemClick: ${item?.id}")
     }
 
 

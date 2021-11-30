@@ -8,27 +8,13 @@ import android.graphics.BitmapFactory
 
 class Utils {
     companion object {
-        fun encodeImageToString(file: File?): String {
-            if (file == null)
-                return ""
-            val inputStream: InputStream =
-                FileInputStream(file) // You can get an inputStream using any I/O API
-
-            val bytes: ByteArray
-            val buffer = ByteArray(8192)
-            var bytesRead: Int
-            val output = ByteArrayOutputStream()
-
-            try {
-                while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-                    output.write(buffer, 0, bytesRead)
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
+        fun File.toBase64(): String? {
+            val result: String?
+            inputStream().use { inputStream ->
+                val sourceBytes = inputStream.readBytes()
+                result = Base64.encodeToString(sourceBytes, Base64.DEFAULT)
             }
-
-            bytes = output.toByteArray()
-            return Base64.encodeToString(bytes, Base64.DEFAULT)
+            return result
         }
 
         fun decodeBase64ToBitMap(imageString: String?): Bitmap? {
@@ -36,34 +22,8 @@ class Utils {
                 if (!imageString!!.isValidValue()) return null
             }
             val imageBytes = Base64.decode(imageString, Base64.DEFAULT)
-            val options = BitmapFactory.Options()
-            options.inJustDecodeBounds = true
-            options.inSampleSize = calculateInSampleSize(options, 100, 100)
-            return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, options)
+            return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
         }
 
-        private fun calculateInSampleSize(
-            options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int
-        ): Int {
-            // Raw height and width of image
-            val height = options.outHeight
-            val width = options.outWidth
-            var inSampleSize = 1
-            if (height > reqHeight || width > reqWidth) {
-                val halfHeight = height / 2
-                val halfWidth = width / 2
-
-                // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-                // height and width larger than the requested height and width.
-                while (halfHeight / inSampleSize >= reqHeight
-                    && halfWidth / inSampleSize >= reqWidth
-                ) {
-                    inSampleSize *= 2
-                }
-            }
-            return inSampleSize
-        }
     }
-
-
 }

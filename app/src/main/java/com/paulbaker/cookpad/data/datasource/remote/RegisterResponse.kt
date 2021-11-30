@@ -7,5 +7,7 @@ data class RegisterResponse(
     @SerializedName("success")
     val success: Boolean?,
     @SerializedName("token")
-    val token: String?
+    val token: String?,
+    @SerializedName("message")
+    val message: String?
 )

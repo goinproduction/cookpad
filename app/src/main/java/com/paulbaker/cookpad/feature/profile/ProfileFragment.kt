@@ -27,6 +27,7 @@ import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.data.datasource.remote.UserProfileResponse
 import com.paulbaker.cookpad.databinding.FragmentProfileBinding
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
+import com.paulbaker.library.core.extension.Utils.Companion.toBase64
 import com.paulbaker.library.core.extension.isNotNull
 import com.paulbaker.library.core.extension.isValidValue
 import com.squareup.picasso.Picasso
@@ -40,6 +41,9 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
     private var uri: Uri? = null
 
     private var startClickTime = 0L
+
+    var temp1: String = ""
+    var temp2: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -107,9 +111,13 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
     }
 
     private fun updateUI(data: UserProfileResponse?) {
-        val bitmap =
-            com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(data?.data?.avatar)
-        binding.userAnhNguoiDung.setImageBitmap(bitmap)
+        if (data?.data?.avatar.toString().isValidValue() && data?.data?.avatar.toString()
+                .isNotNull()
+        ) {
+            binding.userAnhNguoiDung.setImageBitmap(
+                com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(data?.data?.avatar.toString())
+            )
+        }
         binding.userTextTenNguoiDung.text = data?.data?.name
         binding.userTenNguoiDungCoTheNhap.setText(data?.data?.name)
         binding.edtAddress.setText(data?.data?.address)
@@ -118,9 +126,6 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
         }
         binding.userMailCoTheNhap.setText(data?.data?.address)
         binding.edtAbout.setText(data?.data?.about)
-        if (data?.data?.avatar?.isValidValue() == true) {
-            Picasso.get().load(data.data.avatar).into(binding.userAnhNguoiDung)
-        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -245,9 +250,7 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
                     cookpadId = binding.userIDCoTheNhap.text.toString(),
                     about = binding.edtAbout.text.toString(),
                     address = binding.edtAddress.text.toString(),
-                    avatar = com.paulbaker.library.core.extension.Utils.encodeImageToString(
-                        uri?.toFile()
-                    )
+                    avatar = uri?.toFile()?.toBase64()
                 )
             ).observe(viewLifecycleOwner) { resourceResponse ->
                 resourceResponse.let { resources ->
@@ -307,7 +310,13 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
             Activity.RESULT_OK -> {
                 //Image Uri will not be null for RESULT_OK
                 uri = data?.data!!
-                Picasso.get().load(uri).into(binding.userAnhNguoiDung)
+                temp1 = uri?.toFile()?.toBase64().toString()
+                binding.userAnhNguoiDung.setImageBitmap(
+                    com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(
+                        uri?.toFile()?.toBase64()
+                    )
+                )
+                //Picasso.get().load(uri).into(binding.userAnhNguoiDung)
             }
             ImagePicker.RESULT_ERROR -> {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
