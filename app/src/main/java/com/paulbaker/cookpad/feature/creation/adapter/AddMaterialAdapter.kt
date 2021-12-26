@@ -2,10 +2,12 @@ package com.paulbaker.cookpad.feature.creation.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.databinding.ItemCreateMaterialBinding
@@ -92,10 +94,11 @@ class AddMaterialAdapter(
             }
         }
 
+        @RequiresApi(Build.VERSION_CODES.N)
         override fun onClick(v: View?) {
             when (v?.id) {
                 R.id.btnOptionsMaterial -> {
-                    v.showContextMenu()
+                    v.showContextMenu(v.x, v.y)
                 }
                 else ->
                     mClickItem?.onItemClick(v, data[adapterPosition], adapterPosition)
@@ -116,15 +119,8 @@ class AddMaterialAdapter(
                     return@setOnMenuItemClickListener true
                 }
                 menu?.add("Xóa nguyên liệu này")?.setOnMenuItemClickListener {
-                    if (data.size > 2) {
-                        data.removeAt(adapterPosition)
-                        notifyItemRemoved(adapterPosition)
-                    } else
-                        Toast.makeText(
-                            context,
-                            "Không thể xóa, một món ăn phải có ít nhất 2 nguyên liệu trở lên",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    data.removeAt(adapterPosition)
+                    notifyItemRemoved(adapterPosition)
                     return@setOnMenuItemClickListener true
                 }
             }

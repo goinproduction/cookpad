@@ -4,29 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/surfaceColorPrimary">
+    android:background="@color/surfaceColorPrimary"
+    android:paddingVertical="16dp">
 
     <TextView
-        android:id="@+id/post_recipe_StepTuDB"
+        android:id="@+id/tvMaterial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Bước đổ từ DB"
+        android:text="Nguyên liệu đổ từ DB"
         android:textSize="16sp"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/post_recipe_AnhTuDB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:maxHeight="200dp"
-        android:maxWidth="200dp"
-        app:layout_constraintStart_toStartOf="@+id/post_recipe_StepTuDB"
-        app:layout_constraintTop_toBottomOf="@+id/post_recipe_StepTuDB"
-        android:src="@drawable/img_recipe_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

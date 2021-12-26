@@ -2,13 +2,18 @@ package com.paulbaker.cookpad.feature.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
@@ -18,7 +23,8 @@ import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
 import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
 
 class HomeFragment : Fragment(), View.OnClickListener,
-    FoodHomeAdapter.SetOnItemClick {
+    FoodHomeAdapter.SetOnItemClick,
+    SwipeRefreshLayout.OnRefreshListener {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -28,6 +34,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     private val foodHomeData = mutableListOf<FoodHomeModel>()
 
     private val productViewModel: ProductViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,7 +88,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     }
 
     private fun setupListener() {
-
+        binding.swipeLayout.setOnRefreshListener(this)
     }
 
     private fun setupAdapter() {
@@ -92,7 +99,8 @@ class HomeFragment : Fragment(), View.OnClickListener,
     }
 
     override fun onItemClick(view: View, item: RecipesResponse.Data?) {
-        Log.d("TAG", "onItemClick: ${item?.id}")
+        view.findNavController().navigate(R.id.actionViewPost)
+        item?.let { productViewModel.setProductItem(it) }
     }
 
 
@@ -106,4 +114,12 @@ class HomeFragment : Fragment(), View.OnClickListener,
         _binding = null
     }
 
+    override fun onRefresh() {
+        getAllRecipes()
+        Handler(Looper.getMainLooper()).postDelayed({
+            _binding?.let {
+                binding.swipeLayout.isRefreshing = false
+            }
+        }, 2000)
+    }
 }

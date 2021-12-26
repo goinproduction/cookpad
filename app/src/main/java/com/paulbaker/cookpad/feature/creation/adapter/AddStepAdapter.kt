@@ -2,6 +2,7 @@ package com.paulbaker.cookpad.feature.creation.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.data.datasource.local.CreateRecipesModel
@@ -65,7 +67,6 @@ class AddStepAdapter(
             }
         }
         notifyItemMoved(fromPosition, toPosition)
-        notifyDataSetChanged()
     }
 
     fun swipe(position: Int, direction: Int) {
@@ -79,7 +80,7 @@ class AddStepAdapter(
         View.OnCreateContextMenuListener {
         init {
             itemView.setOnClickListener(this)
-            binding.btnAddImageStep.setOnClickListener(this)
+            binding.containerAddImageStep.setOnClickListener(this)
             binding.btnOptionsStep.setOnClickListener(this)
             binding.btnOptionsStep.setOnCreateContextMenuListener(this)
             binding.edtInputStep.addTextChangedListener(object : TextWatcher {
@@ -103,12 +104,12 @@ class AddStepAdapter(
         }
 
         fun bindData(item: CreateRecipesModel.Step?, position: Int) {
-            binding.edtInputStep.hint = item?.name
             binding.tvCount.text = (position + 1).toString()
             item?.picture?.let {
                 binding.btnAddImageStep.setImageBitmap(
-                    com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(item.picture)
+                    com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(data[position].picture)
                 )
+                binding.imgHolder.visibility = View.GONE
             }
 
             if (position == 0)
@@ -125,12 +126,13 @@ class AddStepAdapter(
             }
         }
 
+        @RequiresApi(Build.VERSION_CODES.N)
         override fun onClick(v: View?) {
             when (v?.id) {
                 R.id.btnOptionsStep -> {
-                    v.showContextMenu()
+                    v.showContextMenu(v.x, v.y)
                 }
-                R.id.btnAddImageStep -> {
+                R.id.containerAddImageStep -> {
                     mClickItem?.onItemClick(v, data[adapterPosition], adapterPosition)
                 }
                 else -> {
@@ -158,16 +160,8 @@ class AddStepAdapter(
                     return@setOnMenuItemClickListener true
                 }
                 menu?.add("Xóa bước này")?.setOnMenuItemClickListener {
-                    if (data.size > 2) {
-                        data.removeAt(adapterPosition)
-                        notifyItemRemoved(adapterPosition)
-                        notifyDataSetChanged()
-                    } else
-                        Toast.makeText(
-                            context,
-                            "Không thể xóa, một món ăn phải có ít nhất 2 bước trở lên",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    data.removeAt(adapterPosition)
+                    notifyItemRemoved(adapterPosition)
                     return@setOnMenuItemClickListener true
                 }
             }

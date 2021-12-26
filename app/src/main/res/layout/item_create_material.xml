@@ -27,7 +27,6 @@
         android:background="@drawable/back_ground_item"
         android:hint="Nhập Nguyên Liệu"
         android:textColor="@color/textColorPrimary"
-        android:inputType="textPersonName"
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp"
         android:textColorHint="@color/textColorSecond"

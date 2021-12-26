@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surfaceColorPrimary">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surfaceColorPrimary">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/post_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="10dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_back_black"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="12dp" />
+
+                <ImageView
+                    android:id="@+id/btnOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_options" />
+
+                <ImageView
+                    android:id="@+id/btnCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="32dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_baseline_add_shopping_cart_24" />
+
+                <ImageView
+                    android:id="@+id/btnAction"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="32dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_add_reaction" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/post_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/surfaceColorPrimary">
+
+            <ImageView
+                android:id="@+id/imgFood"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/img_recipe_placeholder"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNameFood"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tên Món Ăn"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgFood" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/post_AnhNguoiDang"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_facebook"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLocale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvAuthor" />
+
+            <TextView
+                android:id="@+id/tvAuthor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Tên người dùng"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/post_AnhNguoiDang"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameFood" />
+
+            <TextView
+                android:id="@+id/tvAuthorId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/cookpad_id"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAuthor"
+                app:layout_constraintStart_toStartOf="@+id/tvAuthor"
+                app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
+
+            <TextView
+                android:id="@+id/tvLocale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Viet nam"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAuthorId"
+                app:layout_constraintStart_toStartOf="@+id/tvAuthorId"
+                app:layout_constraintTop_toBottomOf="@+id/tvAuthorId"/>
+
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/textColorPrimary"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <View
+                android:id="@+id/lineSpace1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:background="@color/colorGrey"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Nguyên liệu"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineSpace1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvNguyenLieu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMaterial"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_view_post_material"/>
+
+            <View
+                android:id="@+id/lineSpace2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:background="@color/colorGrey"
+                app:layout_constraintTop_toBottomOf="@+id/rcvNguyenLieu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Cách làm"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineSpace2" />
+
+            <TextView
+                android:id="@+id/post_text_Reaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Reaction"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rcvStep" />
+
+            <ImageView
+                android:id="@+id/post_button_Like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_text_Reaction"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/post_button_DisLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="?selectableItemBackground"
+                android:src="@android:drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/post_button_Like"
+                app:layout_constraintStart_toEndOf="@+id/post_button_Like"
+                app:layout_constraintTop_toTopOf="@+id/post_button_Like"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/post_text_BinhLuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Bình luận"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_button_Like" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvBinhLuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_text_BinhLuan"
+                tools:itemCount="3" />
+
+            <EditText
+                android:id="@+id/post_NhapBinhLuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/background_button_post"
+                android:hint="Nhập Bình Luận"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:textColorHint="@color/textColorSecond"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rcvBinhLuan"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/post_text_XemThem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Xem thêm"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_NhapBinhLuan" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvStep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStep"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_view_post_step"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvXemThem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_text_XemThem"
+                tools:itemCount="3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

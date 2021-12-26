@@ -29,7 +29,7 @@ data class RecipesResponse(
         @SerializedName("image")
         val image: String?,
         @SerializedName("ingredients")
-        val ingredients: List<String?>?,
+        val ingredients: List<String>?,
         @SerializedName("likes")
         val likes: Int?,
         @SerializedName("origin")
@@ -37,7 +37,7 @@ data class RecipesResponse(
         @SerializedName("serves")
         val serves: Int?,
         @SerializedName("steps")
-        val steps: List<Step?>?,
+        val steps: List<Step>?,
         @SerializedName("title")
         val title: String?,
         @SerializedName("__v")

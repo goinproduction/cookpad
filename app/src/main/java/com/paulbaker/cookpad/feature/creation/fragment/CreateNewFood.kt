@@ -232,7 +232,6 @@ class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
                             Navigation.findNavController(view).popBackStack()
                         } else {
                             binding.pbLoading.visibility = View.GONE
-                            Log.d("TAG", "something went wrong")
                             Toast.makeText(
                                 requireContext(),
                                 "Something went wrong please try again",
@@ -319,7 +318,7 @@ class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
                 binding.createDetailThemMoTaMonAn.text.isNotEmpty() &&
                 binding.edtCount.text.isNotEmpty() &&
                 binding.edtTime.text.isNotEmpty() &&
-                addMaterialAdapter?.data!!.filter { it.isNotEmpty() }.size > 1 &&
-                addStepAdapter?.data!!.filter { it.name?.isNotEmpty() == true }.size > 1
+                addMaterialAdapter?.data!!.any { it.isNotEmpty() } &&
+                addStepAdapter?.data!!.any { it.name?.isNotEmpty() == true }
     }
 }

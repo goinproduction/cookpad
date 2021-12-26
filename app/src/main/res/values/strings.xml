@@ -5,6 +5,7 @@
     <string name="title_create">Creation</string>
     <string name="title_interact">Interaction</string>
     <string name="title_profile">Profile</string>
+    <string name="title_view_post" translatable="false">ViewPost</string>
 
     <string name="title_inspiration_store">Kho Cảm Hứng</string>
     <string name="title_kitchen_friend">Các Bạn Bếp</string>

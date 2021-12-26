@@ -34,7 +34,7 @@ class CreationFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btnCreatePost -> {
-                v.findNavController().navigate(R.id.fragmentCreateDetail)
+                v.findNavController().navigate(R.id.actionCreation)
             }
         }
     }
