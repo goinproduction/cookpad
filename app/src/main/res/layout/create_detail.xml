@@ -20,23 +20,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?selectableItemBackgroundBorderless"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:src="@drawable/ic_back_black"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="12dp" />
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_close" />
 
         <ImageView
             android:id="@+id/create_detail_button_options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_options" />
 
         <TextView
-            android:id="@+id/create_detail_button_UpLoad"
+            android:id="@+id/btnPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -45,20 +44,21 @@
             android:paddingVertical="8dp"
             android:text="Lên Sóng"
             android:textAllCaps="false"
-            android:textColor="@color/textColorPrimary"
-            tools:layout_editor_absoluteX="273dp"
-            tools:layout_editor_absoluteY="10dp" />
+            android:textColor="@color/textColorPrimary" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/create_detail_scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_detail_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentWrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/surfaceColorPrimary">
@@ -76,6 +76,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/imgCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_camera_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/create_detail_ThemAnhMonAn"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRepresent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng hình đại diện món ăn"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCamera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintStart_toEndOf="@+id/guideline4"
+                app:layout_constraintTop_toTopOf="@+id/imgCamera" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
             <EditText
                 android:id="@+id/create_detail_ThemTenMonAn"
                 android:layout_width="match_parent"
@@ -85,6 +115,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
                 android:hint="Tên món:"
+                android:textColor="@color/textColorPrimary"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="16dp"
@@ -100,16 +131,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
                 android:hint="Mô tả món"
+                android:textColor="@color/textColorPrimary"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="16dp"
                 android:textColorHint="@color/textColorSecond"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.571"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_detail_ThemTenMonAn"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -127,14 +159,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/create_detail_ThemMoTaMonAn" />
 
             <EditText
-                android:id="@+id/create_detail_ThemKhauPhan"
+                android:id="@+id/edtCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
-                android:hint="Số lượng người"
-                android:inputType="textPersonName"
+                android:hint="2 người"
+                android:inputType="number"
+                android:textColor="@color/textColorPrimary"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="10dp"
                 android:textColorHint="@color/textColorSecond"
@@ -157,14 +190,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/create_detail_text_KhauPhan" />
 
             <EditText
-                android:id="@+id/create_detail_ThemThoiGianNau"
+                android:id="@+id/edtTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/back_ground_item"
-                android:hint="Name"
-                android:inputType="textPersonName"
+                android:hint="1 tiếng 30 phút"
+                android:inputType="number"
+                android:textColor="@color/textColorPrimary"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="10dp"
                 android:textColorHint="@color/textColorSecond"
@@ -176,51 +210,68 @@
 
 
             <TextView
-                android:id="@+id/create_detail_text_NguyenLieu"
+                android:id="@+id/tvMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="36dp"
-                android:text="@string/test"
+                android:text="Nguyên Liệu"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_detail_text_ThoiGianNau" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/create_detail_rcvNguyenLieu"
+                android:id="@+id/rcvAddMaterial"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/create_detail_text_NguyenLieu"
-                tools:itemCount="3" />
+                app:layout_constraintTop_toBottomOf="@+id/tvMaterial"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_create_material"/>
 
-            <Button
-                android:id="@+id/create_button_ThemNguyenLieu"
+            <TextView
+                android:id="@+id/btnAddMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/background_button_login"
-                android:text="+ Nguyên Liệu"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="8dp"
+                android:textSize="20sp"
+                android:background="?selectableItemBackground"
+                android:text="+  Nguyên Liệu"
                 android:textColor="@color/textColorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/create_detail_rcvNguyenLieu" />
+                app:layout_constraintTop_toBottomOf="@+id/rcvAddMaterial" />
+
+
+            <View
+                android:id="@+id/lineSpace"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/back_ground_item"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddMaterial" />
 
             <TextView
-                android:id="@+id/create_text_Step"
+                android:id="@+id/tvCreateStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Các bước thực hiện"
+                android:textStyle="bold"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/create_button_ThemNguyenLieu" />
+                app:layout_constraintTop_toBottomOf="@+id/lineSpace" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvCachLam"
@@ -230,17 +281,21 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/create_text_Step"
-                tools:itemCount="3" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCreateStep"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_create_step"/>
 
-            <Button
-                android:id="@+id/create_button_Themstep"
+            <TextView
+                android:id="@+id/btnAddStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/background_button_login"
-                android:text="+ Bước"
+                android:background="?selectableItemBackground"
+                android:text="+  Bước"
+                android:layout_marginTop="12dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="8dp"
+                android:textStyle="bold"
                 android:textColor="@color/textColorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -252,7 +307,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
+
+            <ProgressBar
+                android:id="@+id/pbLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

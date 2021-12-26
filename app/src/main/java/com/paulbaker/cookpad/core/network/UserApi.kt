@@ -13,14 +13,22 @@ import retrofit2.http.Path
 
 interface UserApi {
     @POST("api/user/register")
-    suspend fun registerUser(@Body registerUser: RegisterUser) : Response<RegisterResponse>
+    suspend fun registerUser(@Body registerUser: RegisterUser): Response<RegisterResponse>
 
     @POST("api/user/login")
-    suspend fun login(@Body registerUser: RegisterUser) : Response<LoginResponse>
+    suspend fun login(@Body registerUser: RegisterUser): Response<LoginResponse>
 
     @GET("api/user/get/{user_id}")
-    suspend fun getProfile(@Path(value = "user_id", encoded = true) userId :String) : Response<UserProfileResponse>
+    suspend fun getProfile(
+        @Path(
+            value = "user_id",
+            encoded = true
+        ) userId: String
+    ): Response<UserProfileResponse>
 
     @POST("api/user/edit/{user_id}")
-    suspend fun updateProfile(@Path(value = "user_id", encoded = true) userId :String, @Body updateUser: UpdateUser) : Response<UserProfileResponse>
+    suspend fun updateProfile(
+        @Path(value = "user_id", encoded = true) userId: String,
+        @Body updateUser: UpdateUser
+    ): Response<UserProfileResponse>
 }

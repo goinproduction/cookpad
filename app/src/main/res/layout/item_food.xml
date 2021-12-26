@@ -8,7 +8,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    android:layout_marginHorizontal="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -19,9 +20,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageUserPost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_facebook"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +72,6 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/img_recipe_placeholder"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:riv_corner_radius_top_left="8dp"

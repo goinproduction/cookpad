@@ -42,9 +42,6 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
 
     private var startClickTime = 0L
 
-    var temp1: String = ""
-    var temp2: String = ""
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -310,13 +307,11 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
             Activity.RESULT_OK -> {
                 //Image Uri will not be null for RESULT_OK
                 uri = data?.data!!
-                temp1 = uri?.toFile()?.toBase64().toString()
                 binding.userAnhNguoiDung.setImageBitmap(
                     com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(
                         uri?.toFile()?.toBase64()
                     )
                 )
-                //Picasso.get().load(uri).into(binding.userAnhNguoiDung)
             }
             ImagePicker.RESULT_ERROR -> {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)

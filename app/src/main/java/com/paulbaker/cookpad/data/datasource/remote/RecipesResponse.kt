@@ -26,8 +26,10 @@ data class RecipesResponse(
         val hearts: Int?,
         @SerializedName("_id")
         val id: String?,
+        @SerializedName("image")
+        val image: String?,
         @SerializedName("ingredients")
-        val ingredients: List<Ingredient?>?,
+        val ingredients: List<String?>?,
         @SerializedName("likes")
         val likes: Int?,
         @SerializedName("origin")
@@ -39,20 +41,11 @@ data class RecipesResponse(
         @SerializedName("title")
         val title: String?,
         @SerializedName("__v")
-        val v: Int?,
-        @SerializedName("image")
-        val image:String?
+        val v: Int?
     ) {
         data class Author(
             @SerializedName("avatar")
             val avatar: String?,
-            @SerializedName("_id")
-            val id: String?,
-            @SerializedName("name")
-            val name: String?
-        )
-
-        data class Ingredient(
             @SerializedName("_id")
             val id: String?,
             @SerializedName("name")

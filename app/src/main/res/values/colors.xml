@@ -13,6 +13,6 @@
 
 
     <color name="textColorPrimary">@color/black</color>
-    <color name="textColorSecond">#434242</color>
+    <color name="textColorSecond">#5C5C5C</color>
     <color name="surfaceColorPrimary">@color/white</color>
 </resources>

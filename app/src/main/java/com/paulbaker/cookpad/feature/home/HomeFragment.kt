@@ -6,14 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
-import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter

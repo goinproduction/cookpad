@@ -26,5 +26,8 @@
     <string name="user_name">User name</string>
     <string name="update">Update</string>
     <string name="titleAbout">About</string>
+    <string name="title_description">Inspire everyone in the kitchen</string>
+    <string name="write_something">Write something new</string>
+    <string name="new_food">New dishes</string>
 
 </resources>

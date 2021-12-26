@@ -1,19 +1,14 @@
 package com.paulbaker.cookpad.feature.home.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.paulbaker.cookpad.core.utils.Utils
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
-import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
-import com.paulbaker.cookpad.databinding.ItemFoodBinding
 import com.paulbaker.cookpad.databinding.ItemFoodHomeBinding
-import com.squareup.picasso.Picasso
 
 class FoodHomeAdapter(
     val context: Context,

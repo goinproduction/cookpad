@@ -26,6 +26,9 @@
     <string name="user_name">Tên người dùng</string>
     <string name="update">Cập Nhập</string>
     <string name="titleAbout">Thông tin cơ bản</string>
+    <string name="title_description">Truyền cảm hứng vào bếp đến mọi người nào</string>
+    <string name="write_something">Viết gì đó mới</string>
+    <string name="new_food">Món mới</string>
 
     <string-array name="role">
         <item>Người dùng</item>

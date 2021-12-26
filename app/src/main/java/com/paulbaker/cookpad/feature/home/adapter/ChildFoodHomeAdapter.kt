@@ -5,18 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.utils.Utils
-import com.paulbaker.cookpad.data.datasource.remote.FoodResponse
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.ItemFoodBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter.Companion.typeOneByTwo
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter.Companion.typeTwoByThree
 import com.paulbaker.library.core.extension.isNotNull
 import com.paulbaker.library.core.extension.isValidValue
-import com.squareup.picasso.Picasso
 import java.lang.IllegalStateException
 
 class ChildFoodHomeAdapter(
