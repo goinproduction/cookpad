@@ -174,7 +174,7 @@ class RecipeController {
 
   async getAllCategories(req, res) {
     try {
-      const response = await Category.find().populate("categoryLst.recipeLst").exec();
+      const response = await Category.find().populate({ path: 'categoryLst.recipeLst', populate: { path: 'author', select: '-password' } }).exec();
       if (response) {
         return res.status(200).json({
           success: true,
