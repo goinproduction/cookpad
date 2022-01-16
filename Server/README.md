@@ -83,6 +83,24 @@ Content-Type: application/json
 }
 ```
 
+## Cập nhật số lượng likes của recipe
+
+```
+POST http://localhost:8080/api/recipe/editRecipeLike/${recipe_id}?like_num=${like_num}
+```
+
+## Cập nhật số lượng claps của recipe
+
+```
+POST http://localhost:8080/api/recipe/editRecipeClap/${recipe_id}?clap_num=${clap_num}
+```
+
+## Cập nhật số lượng hearts của recipe
+
+```
+POST http://localhost:8080/api/recipe/editRecipeHeart/${recipe_id}?heart_num=${heart_num}
+```
+
 # Models
 
 ## Đăng ký

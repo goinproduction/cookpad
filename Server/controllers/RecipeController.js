@@ -90,13 +90,11 @@ class RecipeController {
 
   async updateLike(req, res) {
     try {
-      const {
-        likes
-      } = req.body;
+      const like_num = req.query.like_num;
       let response = await Recipe.findOneAndUpdate({
         _id: req.params.recipeId
       }, {
-        likes
+        likes: parseInt(like_num)
       }, {
         new: true
       });
@@ -120,13 +118,11 @@ class RecipeController {
 
   async updateHeart(req, res) {
     try {
-      const {
-        hearts
-      } = req.body;
+      const heart_num = req.query.heart_num;
       let response = await Recipe.findOneAndUpdate({
         _id: req.params.recipeId
       }, {
-        hearts
+        hearts: parseInt(heart_num)
       }, {
         new: true
       });
@@ -150,13 +146,11 @@ class RecipeController {
 
   async updateClap(req, res) {
     try {
-      const {
-        claps
-      } = req.body;
+      const clap_num = req.query.clap_num;
       let response = await Recipe.findOneAndUpdate({
         _id: req.params.recipeId
       }, {
-        claps
+        claps: parseInt(clap_num)
       }, {
         new: true
       });
@@ -231,11 +225,16 @@ class RecipeController {
   async search(req, res) {
     try {
       const { payload } = req.body;
-      let recipeLst = await Recipe.find({ title: { $regex: new RegExp('^|.*\\s+' + payload + '\\s+.*|$', 'i') } }).limit(10).exec();
+      let recipeLst = await Recipe.find({ $text: { $search: payload } }).limit(2).exec();
       if (recipeLst.length > 0) {
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
           recipeLst
+        })
+      } else {
+        return res.status(200).json({
+          success: false,
+          message: "Không tìm thấy công thức phù hợp!"
         })
       }
     } catch (error) {

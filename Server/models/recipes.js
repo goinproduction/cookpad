@@ -43,7 +43,7 @@ const recipeSchema = new Schema({
       type: String,
       default: ""
     },
-  }, ],
+  },],
   likes: {
     type: Number,
     default: 0,
@@ -57,5 +57,5 @@ const recipeSchema = new Schema({
     default: 0,
   },
 });
-
+recipeSchema.index({ title: 'text' });
 module.exports = mongoose.model("Recipe", recipeSchema);

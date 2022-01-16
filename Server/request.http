@@ -65,28 +65,13 @@ GET http://localhost:8080/api/recipe/getAllRecipes
 GET http://localhost:8080/api/recipe/getRecipe/61879f8652370cd0a5f73e76
 
 ###
-POST http://localhost:8080/api/recipe/editRecipeLike/618fe5b3dd0552dcb97a2dfd
-Content-Type: application/json
-
-{
-    "likes": 50
-}
+POST http://localhost:8080/api/recipe/editRecipeLike/61cefab66fa3b1c2f4c64813?like_num=3
 
 ###
-POST http://localhost:8080/api/recipe/editRecipeClap/618fe5b3dd0552dcb97a2dfd
-Content-Type: application/json
-
-{
-    "claps": 50
-}
+POST http://localhost:8080/api/recipe/editRecipeClap/61cefab66fa3b1c2f4c64813?clap_num=4
 
 ###
-POST http://localhost:8080/api/recipe/editRecipeHeart/618fe5b3dd0552dcb97a2dfd
-Content-Type: application/json
-
-{
-    "hearts": 50
-}
+POST http://localhost:8080/api/recipe/editRecipeHeart/61cefab66fa3b1c2f4c64813?heart_num=5
 
 ###
 GET http://localhost:8080/api/recipe/getAllCategories
@@ -116,5 +101,5 @@ POST http://localhost:8080/api/recipe/search
 Content-Type: application/json
 
 {
-    "payload": "bò"
+    "payload": "gỏi"
 }
