@@ -1,4 +1,5 @@
 const Recipe = require("../models/recipes");
+const Category = require('../models/category')
 
 class RecipeController {
   async getAllRecipes(req, res) {
@@ -51,6 +52,7 @@ class RecipeController {
       if (await newRecipe.save()) {
         return res.status(200).json({
           success: true,
+          new: newRecipe
         });
       }
     } catch (error) {
@@ -65,8 +67,8 @@ class RecipeController {
   async getRecipeByUserId(req, res) {
     try {
       const response = await Recipe.findOne({
-          author: req.params.userId
-        })
+        author: req.params.userId
+      })
         .populate("author", "name avatar")
         .exec();
       // .populate("author")
@@ -166,6 +168,75 @@ class RecipeController {
         return res.status(400).json({
           success: false,
         });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+
+  async getAllCategories(req, res) {
+    try {
+      const response = await Category.find().populate("categoryLst.recipeLst").exec();
+      if (response) {
+        return res.status(200).json({
+          success: true,
+          data: response,
+        });
+      }
+      return res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+  async createCategory(req, res) {
+    const {
+      name,
+      categoryLst
+    } = req.body;
+
+    try {
+      const newCategory = new Category({
+        name,
+        categoryLst
+      });
+
+      if (await newCategory.save()) {
+        return res.status(200).json({
+          success: true,
+        });
+      }
+      return res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+  async search(req, res) {
+    try {
+      const { payload } = req.body;
+      let recipeLst = await Recipe.find({ title: { $regex: new RegExp('^|.*\\s+' + payload + '\\s+.*|$', 'i') } }).limit(10).exec();
+      if (recipeLst.length > 0) {
+        res.status(200).json({
+          success: true,
+          recipeLst
+        })
       }
     } catch (error) {
       console.log(error);

@@ -11,4 +11,7 @@ router.post("/editRecipeLike/:recipeId", recipeController.updateLike);
 router.post("/editRecipeClap/:recipeId", recipeController.updateClap);
 router.post("/editRecipeHeart/:recipeId", recipeController.updateHeart);
 
+router.get("/getAllCategories", recipeController.getAllCategories);
+router.post("/createCategory", recipeController.createCategory);
+router.post("/search", recipeController.search);
 module.exports = router;

@@ -87,3 +87,34 @@ Content-Type: application/json
 {
     "hearts": 50
 }
+
+###
+GET http://localhost:8080/api/recipe/getAllCategories
+###
+
+POST http://localhost:8080/api/recipe/createCategory
+Content-Type: application/json
+
+{
+    "name": "Đồ Chua Ngày Tết",
+    "categoryLst":[
+            {
+                "title": "tỏi ớt ngâm",
+                "image": "toiot/img",
+                "recipeLst": ["61a4f859c609faeb782addb6"]
+            },
+            {
+                "title": "dưa chua",
+                "image": "duachua/img",
+                "recipeLst": ["61a4f859c609faeb782addb6"]
+            }
+        ]
+}
+
+###
+POST http://localhost:8080/api/recipe/search
+Content-Type: application/json
+
+{
+    "payload": "bò"
+}

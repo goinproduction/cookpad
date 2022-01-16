@@ -66,6 +66,23 @@ http://localhost:8080/api/recipe/editRecipeClap/:recipeId
 http://localhost:8080/api/recipe/editRecipeHeart/:recipeId
 ```
 
+## Lấy tất cả category
+
+```
+GET http://localhost:8080/api/recipe/getAllCategories
+```
+
+## Tìm kiếm theo title
+
+```
+POST http://localhost:8080/api/recipe/search
+Content-Type: application/json
+
+{
+    "payload": "string"
+}
+```
+
 # Models
 
 ## Đăng ký
