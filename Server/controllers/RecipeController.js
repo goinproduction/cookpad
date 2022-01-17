@@ -225,7 +225,7 @@ class RecipeController {
   async search(req, res) {
     try {
       const { payload } = req.body;
-      let data = await Recipe.find({ $text: { $search: payload } }).limit(2).exec();
+      let data = await Recipe.find({ $text: { $search: payload } }).populate("author", "-password").limit(2).exec();
       if (data.length > 0) {
         return res.status(200).json({
           success: true,
