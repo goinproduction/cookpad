@@ -225,11 +225,11 @@ class RecipeController {
   async search(req, res) {
     try {
       const { payload } = req.body;
-      let recipeLst = await Recipe.find({ $text: { $search: payload } }).limit(2).exec();
-      if (recipeLst.length > 0) {
+      let data = await Recipe.find({ $text: { $search: payload } }).limit(2).exec();
+      if (data.length > 0) {
         return res.status(200).json({
           success: true,
-          recipeLst
+          data
         })
       } else {
         return res.status(200).json({
