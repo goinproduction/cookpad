@@ -14,7 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.dhaval2404.imagepicker.ImagePicker
+//import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.gson.Gson
 import com.paulbaker.cookpad.HomeScreenActivity
 import com.paulbaker.cookpad.R
@@ -35,6 +35,10 @@ import com.paulbaker.cookpad.core.platform.SimpleItemTouchHelperCallback
 import com.paulbaker.cookpad.data.datasource.local.StepModel
 import com.paulbaker.cookpad.feature.creation.adapter.AddStepAdapter
 import java.util.*
+import androidx.core.app.ActivityCompat.startActivityForResult
+
+
+
 
 
 class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
@@ -210,7 +214,7 @@ class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
                 origin = Locale.getDefault().country,
                 serves = binding.edtCount.text.toString().toInt(),
                 cookTime = binding.edtTime.text.toString().toInt(),
-                category = "Bò lúc lắc",
+                category = "Món mới nhất",
                 ingredients = addMaterialAdapter?.data?.filter { it.isNotEmpty() },
                 steps = addStepAdapter?.data?.filter { it.name?.isNotEmpty() == true },
                 image = uriRepresent?.toFile()?.toBase64()
@@ -254,14 +258,10 @@ class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
     }
 
     private fun loadAndUpdateImage(requestCode: Int) {
-        ImagePicker.with(this)
-            .crop()
-            .compress(1024)
-            .maxResultSize(
-                1080,
-                1080
-            )
-            .start(requestCode)
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -282,10 +282,6 @@ class CreateNewFood : Fragment(), View.OnClickListener, View.OnTouchListener {
                         }
                     }
                 }
-            }
-            ImagePicker.RESULT_ERROR -> {
-                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
-                    .show()
             }
             else -> {
                 Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()

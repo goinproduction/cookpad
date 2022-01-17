@@ -2,6 +2,7 @@ package com.paulbaker.cookpad.feature.home.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,15 @@ import com.paulbaker.cookpad.databinding.FragmentViewPostBinding
 import com.paulbaker.cookpad.feature.home.adapter.MaterialViewPostAdapter
 import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.gson.Gson
+import com.paulbaker.cookpad.HomeScreenActivity
+import com.paulbaker.cookpad.core.DATA_USER
+import com.paulbaker.cookpad.core.extensions.Status
+import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.feature.home.adapter.StepViewPostAdapter
 
 
-class ViewPostFragment : Fragment(), View.OnClickListener {
+open class ViewPostFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentViewPostBinding? = null
     private val binding get() = _binding!!
 
@@ -26,6 +32,8 @@ class ViewPostFragment : Fragment(), View.OnClickListener {
 
     private var viewMaterialAdapter: MaterialViewPostAdapter? = null
     private var viewStepAdapter: StepViewPostAdapter? = null
+
+    private var likeCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +53,7 @@ class ViewPostFragment : Fragment(), View.OnClickListener {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun setupObserverProductItem() {
+     open fun setupObserverProductItem() {
         productViewModel.productItem.observe(viewLifecycleOwner) {
             binding.imgFood.layoutParams.height = Utils.getDeviceWidth(requireContext())
             binding.imgFood.setImageBitmap(
@@ -66,6 +74,11 @@ class ViewPostFragment : Fragment(), View.OnClickListener {
             viewMaterialAdapter?.notifyDataSetChanged()
             it.steps?.let { steps -> viewStepAdapter?.data?.addAll(steps) }
             viewStepAdapter?.notifyDataSetChanged()
+
+            binding.tvLikeCount.text = it.likes.toString()
+            binding.tvEmotion.text = it.claps.toString()
+            binding.tvFavorite.text = it.hearts.toString()
+            likeCount = it.likes ?: 0
         }
     }
 
@@ -98,12 +111,44 @@ class ViewPostFragment : Fragment(), View.OnClickListener {
 
     private fun setupListener() {
         binding.btnBack.setOnClickListener(this)
+        binding.btnAction.setOnClickListener(this)
+        binding.btnCart.setOnClickListener(this)
+        binding.containerLike.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btnBack -> v.findNavController().popBackStack()
+            R.id.btnAction -> {
+                binding.postScrollview.fullScroll(View.FOCUS_DOWN)
+            }
+            R.id.containerLike -> {
+                editRecipeLike()
+            }
         }
+    }
+
+    private fun editRecipeLike() {
+        val userId = Gson().fromJson(
+            HomeScreenActivity.saveUser?.getString(DATA_USER, Gson().toJson(User())),
+            User::class.java
+        ).id ?: ""
+        productViewModel.editRecipeLike(userId, (likeCount + 1).toString())
+            .observe(viewLifecycleOwner) { resourceResponse ->
+                resourceResponse.let { resources ->
+                    when (resources.status) {
+                        Status.LOADING -> {
+                            Log.d("TAG", "editRecipeLike: ")
+                        }
+                        Status.SUCCESS -> {
+                            Log.d("TAG", "editRecipeLike: ")
+                        }
+                        Status.ERROR -> {
+                            Log.d("TAG", "editRecipeLike: ")
+                        }
+                    }
+                }
+            }
     }
 
     override fun onDestroyView() {

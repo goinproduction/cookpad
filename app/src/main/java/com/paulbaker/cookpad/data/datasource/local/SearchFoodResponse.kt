@@ -1,14 +1,11 @@
-package com.paulbaker.cookpad.data.datasource.remote
+package com.paulbaker.cookpad.data.datasource.local
 
 
 import com.google.gson.annotations.SerializedName
-import com.paulbaker.cookpad.data.datasource.local.Data
 
-data class RecipesResponse(
+data class SearchFoodResponse(
     @SerializedName("data")
     val data: List<Data>?,
     @SerializedName("success")
     val success: Boolean?
-) {
-
-}
+)

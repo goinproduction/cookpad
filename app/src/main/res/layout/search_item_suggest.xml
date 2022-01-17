@@ -1,44 +1,44 @@
-<androidx.cardview.widget.CardView
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-app:cardCornerRadius="10dp"
-app:cardElevation="0dp"
-android:layout_marginTop="5dp"
-android:layout_marginBottom="5dp"
-android:layout_marginStart="5dp"
-android:layout_marginEnd="5dp"
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
 
-    <ImageView
-        android:id="@+id/search_item_suggest_AnhLoaiMonAn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
-        android:scaleType="centerCrop"
-        android:maxHeight="180dp"
-        android:maxWidth="90dp"
-        android:src="@drawable/img_recipe_placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/search_item_suggest_text_TenLoaiMonAn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tên Loại món gợi ý"
-        android:textSize="20dp"
-        android:textColor="@color/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/search_item_suggest_AnhLoaiMonAn"
-        app:layout_constraintEnd_toEndOf="@+id/search_item_suggest_AnhLoaiMonAn"
-        app:layout_constraintStart_toStartOf="@+id/search_item_suggest_AnhLoaiMonAn"
-        app:layout_constraintTop_toTopOf="@+id/search_item_suggest_AnhLoaiMonAn" />
+        <ImageView
+            android:id="@+id/search_item_suggest_AnhLoaiMonAn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:maxWidth="90dp"
+            android:maxHeight="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_recipe_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/search_item_suggest_text_TenLoaiMonAn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Loại món gợi ý"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_item_suggest_AnhLoaiMonAn"
+            app:layout_constraintEnd_toEndOf="@+id/search_item_suggest_AnhLoaiMonAn"
+            app:layout_constraintStart_toStartOf="@+id/search_item_suggest_AnhLoaiMonAn"
+            app:layout_constraintTop_toTopOf="@+id/search_item_suggest_AnhLoaiMonAn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

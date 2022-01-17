@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.utils.Utils
+import com.paulbaker.cookpad.data.datasource.local.Data
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.ItemFoodBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter.Companion.typeOneByTwo
@@ -18,7 +19,7 @@ import java.lang.IllegalStateException
 
 class ChildFoodHomeAdapter(
     val context: Context,
-    val data: MutableList<RecipesResponse.Data?>?,
+    val data: MutableList<Data>?,
     val clickItem: FoodHomeAdapter.SetOnItemClick? = null,
     val type: Int? = null
 ) :
@@ -72,7 +73,7 @@ class ChildFoodHomeAdapter(
             binding.containerEmotion.setOnClickListener(this)
         }
 
-        fun bindData(item: RecipesResponse.Data?) {
+        fun bindData(item: Data?) {
 //            binding.root.layoutParams.width = (Utils.getDeviceWidth(context) / 2)
 //            binding.root.layoutParams.height= (Utils.getDeviceWidth(context)/2+Utils.getDeviceWidth(context)/5)
 
@@ -135,7 +136,7 @@ class ChildFoodHomeAdapter(
             binding.containerEmotion.setOnClickListener(this)
         }
 
-        fun bindData(item: RecipesResponse.Data?) {
+        fun bindData(item: Data?) {
             binding.itemFoodAnhDaiDienMonAn.layoutParams.width = (Utils.getDeviceWidth(context) * (2f / 3f)).toInt()
 
             binding.itemFoodAnhDaiDienMonAn.layoutParams.height =

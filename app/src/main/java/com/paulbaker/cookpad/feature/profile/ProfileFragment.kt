@@ -9,15 +9,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.*
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.github.dhaval2404.imagepicker.ImagePicker
+//import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.gson.Gson
 import com.paulbaker.cookpad.HomeScreenActivity
-import com.paulbaker.cookpad.HomeViewModel
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.extensions.Status
@@ -26,6 +24,7 @@ import com.paulbaker.cookpad.data.datasource.local.UpdateUser
 import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.data.datasource.remote.UserProfileResponse
 import com.paulbaker.cookpad.databinding.FragmentProfileBinding
+import com.paulbaker.cookpad.feature.creation.fragment.CreateNewFood
 import com.paulbaker.cookpad.feature.login.viewmodel.UserViewModel
 import com.paulbaker.library.core.extension.Utils.Companion.toBase64
 import com.paulbaker.library.core.extension.isNotNull
@@ -33,6 +32,11 @@ import com.paulbaker.library.core.extension.isValidValue
 import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
+
+    companion object{
+        const val REQUEST_CODE_PICK_PROFILE = 2023
+    }
+
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -41,6 +45,7 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
     private var uri: Uri? = null
 
     private var startClickTime = 0L
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -222,20 +227,24 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
                 updateUserProfile()
             }
             R.id.user_AnhNguoiDung -> {
-                loadAndUpdateImage()
+                loadAndUpdateImage(REQUEST_CODE_PICK_PROFILE)
             }
         }
     }
 
-    private fun loadAndUpdateImage() {
-        ImagePicker.with(this)
-            .crop()
-            .compress(1024)
-            .maxResultSize(
-                1080,
-                1080
-            )
-            .start()
+    private fun loadAndUpdateImage(requestCode: Int) {
+//        ImagePicker.with(this)
+//            .crop()
+//            .compress(1024)
+//            .maxResultSize(
+//                1080,
+//                1080
+//            )
+//            .start()
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode)
     }
 
     private fun updateUserProfile() {
@@ -305,17 +314,17 @@ class ProfileFragment : Fragment(), View.OnClickListener, View.OnTouchListener {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
             Activity.RESULT_OK -> {
-                //Image Uri will not be null for RESULT_OK
-                uri = data?.data!!
-                binding.userAnhNguoiDung.setImageBitmap(
-                    com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(
-                        uri?.toFile()?.toBase64()
-                    )
-                )
-            }
-            ImagePicker.RESULT_ERROR -> {
-                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
-                    .show()
+                when (requestCode) {
+                    Activity.RESULT_OK -> {
+                        //Image Uri will not be null for RESULT_OK
+                        uri = data?.data!!
+                        binding.userAnhNguoiDung.setImageBitmap(
+                            com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(
+                                uri?.toFile()?.toBase64()
+                            )
+                        )
+                    }
+                }
             }
             else -> {
                 Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()

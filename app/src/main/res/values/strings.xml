@@ -29,10 +29,17 @@
     <string name="titleAbout">Thông tin cơ bản</string>
     <string name="title_description">Truyền cảm hứng vào bếp đến mọi người nào</string>
     <string name="write_something">Viết gì đó mới</string>
+    <string name="no_result">Không thấy món bạn muốn ?</string>
+    <string name="let_create_food">Hãy là người đầu tiên chia sẻ cách làm món đó để giúp các bạn khác nhé!</string>
     <string name="new_food">Món mới</string>
+    <string name="add_food">Thêm món</string>
+    <string name="speech_prompt" translatable="false">Nói gì đó…</string>
+    <string name="speech_not_supported" translatable="false">Xin lỗi, thiết bị của bạn không hỗ trợ giọng nói</string>
 
     <string-array name="role">
         <item>Người dùng</item>
         <item>Shipper</item>
     </string-array>
+
+    <string name="format_detail" translatable="false">%s %s</string>
 </resources>

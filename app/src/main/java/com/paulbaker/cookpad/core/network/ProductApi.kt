@@ -1,6 +1,8 @@
 package com.paulbaker.cookpad.core.network
 
 import com.paulbaker.cookpad.data.datasource.local.CreateRecipesModel
+import com.paulbaker.cookpad.data.datasource.local.Payload
+import com.paulbaker.cookpad.data.datasource.local.SearchFoodResponse
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.data.datasource.remote.RegisterResponse
 import retrofit2.Response
@@ -18,4 +20,16 @@ interface ProductApi {
         @Path(value = "user_id", encoded = true) userId: String,
         @Body recipes: CreateRecipesModel
     ): Response<RegisterResponse>
+
+    @POST("api/recipe/editRecipeLike/{user_id}")
+    suspend fun editRecipeLike(
+        @Path(
+            value = "user_id",
+            encoded = true
+        ) userId: String,
+        @Body likes: String
+    ): Response<RegisterResponse>
+
+    @POST("/api/recipe/search")
+    suspend fun searchFood(@Body payload: Payload): Response<SearchFoodResponse>
 }

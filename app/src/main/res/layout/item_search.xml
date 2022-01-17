@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/surfaceColorPrimary"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    android:layout_marginVertical="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tvTitleSearchFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            tools:text="Tép rang lá chanh"
+            android:textSize="16sp"
+            android:textColor="@color/textColorPrimary"
+            android:textStyle="bold"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageAuthor"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleSearchFood"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleSearchFood"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAuthor"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_user_small"/>
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/imageAuthor"
+            app:layout_constraintTop_toTopOf="@+id/imageAuthor"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/textColorSecond"
+            tools:text="Nguyễn Bá Lộng"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageFood"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            app:riv_corner_radius="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="@+id/tvTitleSearchFood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            app:layout_constraintBottom_toBottomOf="@+id/imageFood"
+            app:layout_constraintEnd_toStartOf="@+id/imageFood"
+            app:layout_constraintStart_toStartOf="@+id/imageAuthor"
+            app:layout_constraintTop_toBottomOf="@+id/imageAuthor"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

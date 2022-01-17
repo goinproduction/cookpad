@@ -26,7 +26,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
-        val baseURL = "http://192.168.1.12:8080/"
+        val baseURL = "http://192.168.1.2:8080/"
         return Retrofit.Builder()
             .baseUrl(baseURL)
             .addConverterFactory(GsonConverterFactory.create())

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable-anydpi/ic_back.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable-v24/bg_corner_input_phone.xml" value="0.1" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable-xxxhdpi/ic_mic.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/back_ground_item.xml" value="0.176" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/background_button_common.xml" value="0.2630208333333333" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/background_button_login.xml" value="0.2630208333333333" />
@@ -20,8 +21,10 @@
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_emotion.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_favorite.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_like.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_mic.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/ic_search_regular_unselected.xml" value="0.25364583333333335" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/launch_screen.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/drawable/search_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/activity_main.xml" value="0.24375" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/cart.xml" value="0.246875" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/create_detail.xml" value="0.2" />
@@ -37,7 +40,7 @@
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_profile.xml" value="0.246875" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_register.xml" value="0.2" />
-        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_search.xml" value="0.246875" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/fragment_search.xml" value="0.152" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/homepage.xml" value="0.2" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/homepage_horizontalscroll.xml" value="0.25" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_create_material.xml" value="0.25" />
@@ -45,7 +48,9 @@
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_food.xml" value="0.4" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_food_completed.xml" value="0.25" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_food_home.xml" value="0.2375" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_search.xml" value="0.2" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_test.xml" value="0.2" />
+        <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/item_view_post_material.xml" value="0.25" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post.xml" value="0.246875" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post_comment.xml" value="0.25" />
         <entry key="..\:/Android/CNPM_Nhom20/app/src/main/res/layout/post_material.xml" value="0.246875" />
@@ -76,7 +81,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
