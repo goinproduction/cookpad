@@ -1,6 +1,6 @@
 const Recipe = require("../models/recipes");
 const Category = require('../models/category')
-
+const Cart = require('../models/cart');
 class RecipeController {
   async getAllRecipes(req, res) {
     try {
@@ -237,6 +237,81 @@ class RecipeController {
           message: "Không tìm thấy công thức phù hợp!"
         })
       }
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+  async createCartByUserId(req, res) {
+    try {
+      const userId = req.params.userId;
+      const { recipeLst } = req.body;
+      const newCart = new Cart({
+        userId,
+        recipeLst
+      })
+      if (await newCart.save()) {
+        return res.status(200).json({
+          message: "Thêm thành công!",
+          success: true,
+          data: newCart
+        })
+      }
+      return res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+
+  async updateCartByUserId(req, res) {
+    try {
+      const userId = req.params.userId;
+      const { recipeLst } = req.body;
+      const response = await Cart.findOneAndUpdate({ userId }, { recipeLst }, { new: true }).populate("userId", "-password").populate("recipeLst").exec();
+      if (response) {
+        return res.status(200).json({
+          message: "Cập nhật thành công!",
+          success: true,
+          data: response
+        })
+      }
+      return res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  }
+  async getCartByUserId(req, res) {
+    try {
+      const userId = req.params.userId;
+      const response = await Cart.find({ userId }).populate("userId", "-password").populate("recipeLst").exec();
+      if (response) {
+        return res.status(200).json({
+          message: "Lấy thông tin thành công!",
+          success: true,
+          data: response
+        })
+      }
+      return res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      })
     } catch (error) {
       console.log(error);
       res.status(400).json({
