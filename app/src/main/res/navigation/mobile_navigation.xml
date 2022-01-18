@@ -31,7 +31,23 @@
         android:id="@+id/navigation_search"
         android:name="com.paulbaker.cookpad.feature.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/actionViewPost"
+            app:destination="@+id/fragmentViewPost"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top" />
+
+        <action
+            android:id="@+id/actionCreation"
+            app:destination="@+id/fragmentCreateDetail"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_creation"
         android:name="com.paulbaker.cookpad.feature.creation.CreationFragment"

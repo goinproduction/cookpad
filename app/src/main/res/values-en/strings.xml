@@ -28,6 +28,9 @@
     <string name="titleAbout">About</string>
     <string name="title_description">Inspire everyone in the kitchen</string>
     <string name="write_something">Write something new</string>
+    <string name="no_result">Don\'t see what you want ?</string>
+    <string name="let_create_food">Be the first to share how to make it to help others!</string>
     <string name="new_food">New dishes</string>
+    <string name="add_food">Add dishes</string>
 
 </resources>

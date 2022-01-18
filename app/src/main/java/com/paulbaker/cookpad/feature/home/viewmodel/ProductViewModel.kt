@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.paulbaker.cookpad.core.extensions.Resource
 import com.paulbaker.cookpad.data.datasource.local.CreateRecipesModel
+import com.paulbaker.cookpad.data.datasource.local.Data
+import com.paulbaker.cookpad.data.datasource.local.Payload
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.data.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductViewModel @Inject constructor(private val productRepository: ProductRepository) :
     ViewModel() {
-    val productItem = MutableLiveData<RecipesResponse.Data>()
+    val productItem = MutableLiveData<Data>()
     fun getAllRecipes() = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
@@ -33,7 +35,27 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
         }
     }
 
-    fun setProductItem(item: RecipesResponse.Data) {
+    fun editRecipeLike(userId: String, likes: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(productRepository.editRecipeLike(userId, likes)))
+        } catch (ex: Exception) {
+            emit(Resource.error(null, ex.message ?: "Error"))
+        }
+    }
+
+    fun searchFood(payload: Payload) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(productRepository.searchFood(payload)))
+        } catch (ex: Exception) {
+            emit(Resource.error(null, ex.message ?: "Error"))
+        }
+    }
+
+
+
+    fun setProductItem(item: Data) {
         this.productItem.value = item
     }
 

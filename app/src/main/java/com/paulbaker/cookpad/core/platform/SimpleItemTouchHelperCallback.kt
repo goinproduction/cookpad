@@ -15,7 +15,7 @@ class SimpleItemTouchHelperCallback constructor(private val mListenner: ItemTouc
     }
 
     override fun isItemViewSwipeEnabled(): Boolean {
-        return super.isItemViewSwipeEnabled()
+        return false
     }
 
     override fun getMovementFlags(

@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.paulbaker.cookpad.data.datasource.local.Data
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.ItemViewPostStepBinding
 
 class StepViewPostAdapter(
     val context: Context,
-    val data: MutableList<RecipesResponse.Data.Step> = mutableListOf(),
+    val data: MutableList<Data.Step> = mutableListOf(),
     val mClickItem: SetOnItemClick? = null
 ) :
     RecyclerView.Adapter<StepViewPostAdapter.ViewHolder>() {
@@ -35,7 +36,7 @@ class StepViewPostAdapter(
             itemView.setOnClickListener(this)
         }
 
-        fun bindData(item: RecipesResponse.Data.Step?, position: Int) {
+        fun bindData(item: Data.Step?, position: Int) {
             binding.tvCount.text = (position + 1).toString()
             item?.picture.let {
                 binding.imgStep.setImageBitmap(
@@ -53,6 +54,6 @@ class StepViewPostAdapter(
     }
 
     interface SetOnItemClick {
-        fun onItemClick(view: View?, item: RecipesResponse.Data.Step, position: Int)
+        fun onItemClick(view: View?, item: Data.Step, position: Int)
     }
 }

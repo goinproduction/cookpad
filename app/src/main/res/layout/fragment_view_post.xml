@@ -86,8 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:background="?selectableItemBackground"
-                android:src="@drawable/img_recipe_placeholder"
                 android:scaleType="fitXY"
+                android:src="@drawable/img_recipe_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,9 +97,9 @@
                 android:id="@+id/tvNameFood"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
                 android:text="Tên Món Ăn"
-                android:layout_marginHorizontal="16dp"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,10 +121,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Tên người dùng"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="16sp"
-                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/post_AnhNguoiDang"
                 app:layout_constraintTop_toBottomOf="@+id/tvNameFood" />
@@ -151,7 +151,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvAuthorId"
                 app:layout_constraintStart_toStartOf="@+id/tvAuthorId"
-                app:layout_constraintTop_toBottomOf="@+id/tvAuthorId"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvAuthorId" />
 
 
             <TextView
@@ -161,9 +161,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/textColorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/tvLocale"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvLocale" />
 
 
             <View
@@ -173,9 +173,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="16dp"
                 android:background="@color/colorGrey"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
             <TextView
                 android:id="@+id/tvMaterial"
@@ -199,7 +199,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMaterial"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_view_post_material"/>
+                tools:listitem="@layout/item_view_post_material"
+                tools:visibility="gone" />
 
             <View
                 android:id="@+id/lineSpace2"
@@ -208,9 +209,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="16dp"
                 android:background="@color/colorGrey"
-                app:layout_constraintTop_toBottomOf="@+id/rcvNguyenLieu"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/rcvNguyenLieu" />
 
             <TextView
                 android:id="@+id/tvStep"
@@ -236,29 +237,97 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rcvStep" />
 
-            <ImageView
-                android:id="@+id/post_button_Like"
+            <LinearLayout
+                android:id="@+id/containerLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:background="?selectableItemBackground"
-                android:src="@drawable/ic_like"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/post_text_Reaction"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_conner_item_statistic"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                app:layout_constraintStart_toStartOf="@+id/post_text_Reaction"
+                app:layout_constraintTop_toBottomOf="@+id/post_text_Reaction">
 
-            <ImageView
-                android:id="@+id/post_button_DisLike"
+                <ImageView
+                    android:id="@+id/btnLike"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:src="@drawable/ic_like" />
+
+                <TextView
+                    android:id="@+id/tvLikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:text="5"
+                    android:textColor="@color/textColorSecond"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerEmotion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:background="?selectableItemBackground"
-                android:src="@android:drawable/ic_delete"
-                app:layout_constraintBottom_toBottomOf="@+id/post_button_Like"
-                app:layout_constraintStart_toEndOf="@+id/post_button_Like"
-                app:layout_constraintTop_toTopOf="@+id/post_button_Like"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_conner_item_statistic"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                app:layout_constraintStart_toEndOf="@+id/containerLike"
+                app:layout_constraintTop_toTopOf="@+id/containerLike">
+
+                <ImageView
+                    android:id="@+id/btnEmotion"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:src="@drawable/ic_emotion" />
+
+                <TextView
+                    android:id="@+id/tvEmotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:text="5"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_conner_item_statistic"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                app:layout_constraintStart_toEndOf="@+id/containerEmotion"
+                app:layout_constraintTop_toTopOf="@+id/containerEmotion">
+
+                <ImageView
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:src="@drawable/ic_favorite" />
+
+                <TextView
+                    android:id="@+id/tvFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:text="5"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/post_text_BinhLuan"
@@ -270,7 +339,7 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/post_button_Like" />
+                app:layout_constraintTop_toBottomOf="@+id/containerLike" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvBinhLuan"
@@ -324,7 +393,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvStep"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_view_post_step"/>
+                tools:listitem="@layout/item_view_post_step"
+                tools:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvXemThem"

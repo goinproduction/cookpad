@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.paulbaker.cookpad.data.datasource.local.Data
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
@@ -44,9 +45,9 @@ class Utils {
             return metrics.widthPixels
         }
 
-        fun groupFoodByCategory(data: MutableList<RecipesResponse.Data?>?): MutableList<FoodHomeModel> {
+        fun groupFoodByCategory(data: MutableList<Data>?): MutableList<FoodHomeModel> {
             val listFood: MutableList<FoodHomeModel> = mutableListOf()
-            val listFoodGroup = data?.groupBy { it?.category }
+            val listFoodGroup = data?.groupBy { it.category }
             listFoodGroup?.entries?.forEachIndexed { index, entry ->
                 if (index == 0) {
                     listFood.add(

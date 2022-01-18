@@ -16,7 +16,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
+import com.paulbaker.cookpad.data.datasource.local.Data
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
+import com.paulbaker.cookpad.data.datasource.local.Payload
 import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
@@ -35,6 +37,11 @@ class HomeFragment : Fragment(), View.OnClickListener,
 
     private val productViewModel: ProductViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getAllRecipes()
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,11 +56,10 @@ class HomeFragment : Fragment(), View.OnClickListener,
         super.onViewCreated(view, savedInstanceState)
         setupListener()
         setupAdapter()
-        getAllRecipes()
     }
 
     private fun getAllRecipes() {
-        productViewModel.getAllRecipes().observe(viewLifecycleOwner) { resourceResponse ->
+        productViewModel.getAllRecipes().observe(this) { resourceResponse ->
             resourceResponse.let { resources ->
                 when (resources.status) {
                     Status.LOADING -> {
@@ -81,7 +87,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun updateFoodHome(foodResponseData: MutableList<RecipesResponse.Data?>?) {
+    private fun updateFoodHome(foodResponseData: MutableList<Data>?) {
         foodHomeData.clear()
         foodHomeData.addAll(Utils.groupFoodByCategory(foodResponseData))
         foodHomeAdapter?.notifyDataSetChanged()
@@ -89,6 +95,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
 
     private fun setupListener() {
         binding.swipeLayout.setOnRefreshListener(this)
+        binding.homepageToolbarButtonCart.setOnClickListener(this)
     }
 
     private fun setupAdapter() {
@@ -98,14 +105,15 @@ class HomeFragment : Fragment(), View.OnClickListener,
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
-    override fun onItemClick(view: View, item: RecipesResponse.Data?) {
+    override fun onItemClick(view: View, item: Data?) {
         view.findNavController().navigate(R.id.actionViewPost)
         item?.let { productViewModel.setProductItem(it) }
     }
 
 
     override fun onClick(v: View?) {
-
+        when(v?.id){
+        }
     }
 
 
