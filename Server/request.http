@@ -104,25 +104,16 @@ Content-Type: application/json
     "payload": "gỏi"
 }
 
+###
+GET http://localhost:8080/api/recipe/getAllCategories
 
-### Tạo giỏ hàng, mỗi người dùng chỉ có 1 giỏ hàng
-### API: POST http://localhost:8080/api/recipe/createCart/${userId}
-POST http://localhost:8080/api/recipe/createCart/61879f8652370cd0a5f73e76
+###
+GET http://localhost:8080/api/recipe/getCart?userId=61879f8652370cd0a5f73e76  
+
+###
+POST http://localhost:8080/api/recipe/updateCart?userId=61879f8652370cd0a5f73e76
 Content-Type: application/json
 
 {
-    "recipeLst": ["61e3b5a285374ee7d655d12f", "61e3b9c885374ee7d655d135"]
+    "recipes": ["61e3b5a285374ee7d655d12f"]
 }
-
-### Cập nhật giỏ hàng theo mã người dùng
-### API: PUT http://localhost:8080/api/recipe/updateCart/${userId}
-PUT http://localhost:8080/api/recipe/updateCart/61879f8652370cd0a5f73e76
-Content-Type: application/json
-
-{
-    "recipeLst": ["61e3b5a285374ee7d655d12f"]
-}
-
-### Lấy thông tin giỏ hàng
-### API: GET http://localhost:8080/api/recipe/getCart/${userId}
-GET http://localhost:8080/api/recipe/getCart/61879f8652370cd0a5f73e76

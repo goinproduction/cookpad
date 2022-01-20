@@ -6,7 +6,7 @@ const cartSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    recipeLst: [{
+    recipes: [{
         type: Schema.Types.ObjectId,
         ref: 'Recipe'
     }]

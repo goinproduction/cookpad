@@ -232,37 +232,47 @@ class RecipeController {
           data
         })
       } else {
-        return res.status(200).json({
+        return res.status(400).json({
           success: false,
           message: "Không tìm thấy công thức phù hợp!"
         })
       }
     } catch (error) {
       console.log(error);
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "Internal Server Error",
       });
     }
   }
-  async createCartByUserId(req, res) {
+  async updateCartByUserId(req, res) {
     try {
-      const userId = req.params.userId;
-      const { recipeLst } = req.body;
-      const newCart = new Cart({
-        userId,
-        recipeLst
-      })
-      if (await newCart.save()) {
-        return res.status(200).json({
-          message: "Thêm thành công!",
-          success: true,
-          data: newCart
-        })
+      const userId = req.query.userId;
+      const { recipes } = req.body;
+      let cart = await Cart.findOne({ userId }).exec();
+      if (cart) {
+        cart.recipes.push(recipes);
+        if (await cart.save()) {
+          return res.status(200).json({
+            success: true,
+            message: "Thêm thành công!"
+          })
+        }
+      } else {
+        const newCart = new Cart({
+          userId,
+          recipes
+        });
+        if (await newCart.save()) {
+          return res.status(200).json({
+            success: true,
+            message: "Tạo thành công!"
+          })
+        }
       }
       return res.status(400).json({
         success: false,
-        message: "Bad Request"
+        message: "Bad Request!"
       })
     } catch (error) {
       console.log(error);
@@ -273,34 +283,10 @@ class RecipeController {
     }
   }
 
-  async updateCartByUserId(req, res) {
-    try {
-      const userId = req.params.userId;
-      const { recipeLst } = req.body;
-      const response = await Cart.findOneAndUpdate({ userId }, { recipeLst }, { new: true }).populate("userId", "-password").populate("recipeLst").exec();
-      if (response) {
-        return res.status(200).json({
-          message: "Cập nhật thành công!",
-          success: true,
-          data: response
-        })
-      }
-      return res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      })
-    } catch (error) {
-      console.log(error);
-      res.status(400).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
   async getCartByUserId(req, res) {
     try {
-      const userId = req.params.userId;
-      const response = await Cart.find({ userId }).populate("userId", "-password").populate("recipeLst").exec();
+      const userId = req.query.userId;
+      const response = await Cart.find({ userId }).populate("recipes").populate("recipes.userId").exec();
       if (response) {
         return res.status(200).json({
           message: "Lấy thông tin thành công!",
@@ -310,7 +296,7 @@ class RecipeController {
       }
       return res.status(400).json({
         success: false,
-        message: "Bad Request"
+        message: "Bad Request!"
       })
     } catch (error) {
       console.log(error);

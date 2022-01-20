@@ -15,7 +15,6 @@ router.get("/getAllCategories", recipeController.getAllCategories);
 router.post("/createCategory", recipeController.createCategory);
 router.post("/search", recipeController.search);
 
-router.post("/createCart/:userId", recipeController.createCartByUserId);
-router.put("/updateCart/:userId", recipeController.updateCartByUserId);
-router.get("/getCart/:userId", recipeController.getCartByUserId);
+router.post("/updateCart", recipeController.updateCartByUserId);
+router.get("/getCart", recipeController.getCartByUserId);
 module.exports = router;
