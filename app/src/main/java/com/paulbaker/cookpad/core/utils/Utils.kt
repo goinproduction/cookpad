@@ -7,9 +7,8 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.paulbaker.cookpad.data.datasource.local.Data
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
 
 class Utils {

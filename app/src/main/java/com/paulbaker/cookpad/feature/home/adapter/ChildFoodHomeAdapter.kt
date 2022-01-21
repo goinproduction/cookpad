@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.utils.Utils
-import com.paulbaker.cookpad.data.datasource.local.Data
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.databinding.ItemFoodBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter.Companion.typeOneByTwo
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter.Companion.typeTwoByThree

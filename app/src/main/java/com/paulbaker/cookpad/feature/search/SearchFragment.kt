@@ -6,7 +6,6 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -17,9 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
-import com.paulbaker.cookpad.data.datasource.local.Data
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.data.datasource.local.Payload
-import com.paulbaker.cookpad.data.datasource.local.SearchFoodResponse
 import com.paulbaker.cookpad.databinding.FragmentSearchBinding
 import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
 import com.paulbaker.cookpad.feature.search.adapter.SearchAdapter

@@ -17,6 +17,14 @@
             app:exitAnim="@anim/wait_anim"
             app:popEnterAnim="@anim/wait_anim"
             app:popExitAnim="@anim/slide_top" />
+
+        <action
+            android:id="@+id/actionViewCart"
+            app:destination="@+id/fragmentViewCart"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top" />
     </fragment>
 
 
@@ -25,6 +33,27 @@
         android:name="com.paulbaker.cookpad.feature.home.fragment.ViewPostFragment"
         android:label="@string/title_view_post"
         tools:layout="@layout/fragment_view_post" />
+
+    <fragment
+        android:id="@+id/fragmentViewCart"
+        android:name="com.paulbaker.cookpad.feature.cart.CartFragment"
+        tools:layout="@layout/cart_fragment">
+        <action
+            android:id="@+id/actionViewPost"
+            app:destination="@+id/fragmentViewPost"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top" />
+
+        <action
+            android:id="@+id/actionCreation"
+            app:destination="@+id/fragmentCreateDetail"
+            app:enterAnim="@anim/slide_bottom"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_top" />
+    </fragment>
 
 
     <fragment
@@ -69,12 +98,6 @@
         android:name="com.paulbaker.cookpad.feature.creation.fragment.CreateNewFood"
         tools:layout="@layout/create_detail" />
 
-
-    <fragment
-        android:id="@+id/navigation_interaction"
-        android:name="com.paulbaker.cookpad.feature.interaction.InteractionFragment"
-        android:label="@string/title_interact"
-        tools:layout="@layout/fragment_interaction" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.paulbaker.cookpad.feature.profile.ProfileFragment"

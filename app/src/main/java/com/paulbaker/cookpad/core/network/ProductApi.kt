@@ -1,15 +1,11 @@
 package com.paulbaker.cookpad.core.network
 
+import com.paulbaker.cookpad.data.datasource.local.CartRecipesModel
 import com.paulbaker.cookpad.data.datasource.local.CreateRecipesModel
 import com.paulbaker.cookpad.data.datasource.local.Payload
-import com.paulbaker.cookpad.data.datasource.local.SearchFoodResponse
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
-import com.paulbaker.cookpad.data.datasource.remote.RegisterResponse
+import com.paulbaker.cookpad.data.datasource.remote.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ProductApi {
     @GET("api/recipe/getAllRecipes")
@@ -32,4 +28,13 @@ interface ProductApi {
 
     @POST("/api/recipe/search")
     suspend fun searchFood(@Body payload: Payload): Response<SearchFoodResponse>
+
+
+    @GET("api/recipe/getCart?")
+    suspend fun getCartUser(@Query(value = "userId") userId: String): Response<CartRecipesResponse>
+
+
+    @POST("/api/recipe/updateCart?")
+    suspend fun updateCartUser(@Query(value = "userId") userId: String,
+                               @Body cartRecipesModel: CartRecipesModel): Response<RegisterResponse>
 }

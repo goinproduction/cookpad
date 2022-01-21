@@ -16,10 +16,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.paulbaker.cookpad.R
 import com.paulbaker.cookpad.core.extensions.Status
 import com.paulbaker.cookpad.core.utils.Utils
-import com.paulbaker.cookpad.data.datasource.local.Data
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.data.datasource.local.FoodHomeModel
-import com.paulbaker.cookpad.data.datasource.local.Payload
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.databinding.FragmentHomeBinding
 import com.paulbaker.cookpad.feature.home.adapter.FoodHomeAdapter
 import com.paulbaker.cookpad.feature.home.viewmodel.ProductViewModel
@@ -40,6 +38,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getAllRecipes()
+
     }
 
 
@@ -113,6 +112,9 @@ class HomeFragment : Fragment(), View.OnClickListener,
 
     override fun onClick(v: View?) {
         when(v?.id){
+            R.id.homepage_toolbar_button_cart ->{
+                v.findNavController().navigate(R.id.actionViewCart)
+            }
         }
     }
 
