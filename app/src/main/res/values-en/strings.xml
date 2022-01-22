@@ -32,5 +32,6 @@
     <string name="let_create_food">Be the first to share how to make it to help others!</string>
     <string name="new_food">New dishes</string>
     <string name="add_food">Add dishes</string>
+    <string name="my_cart">My Cart</string>
 
 </resources>

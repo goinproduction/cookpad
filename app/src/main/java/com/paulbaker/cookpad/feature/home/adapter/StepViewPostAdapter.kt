@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.paulbaker.cookpad.data.datasource.local.Data
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.databinding.ItemViewPostStepBinding
 
 class StepViewPostAdapter(

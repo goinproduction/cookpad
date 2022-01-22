@@ -1,4 +1,4 @@
-package com.paulbaker.cookpad.data.datasource.local
+package com.paulbaker.cookpad.data.datasource.remote
 
 import com.google.gson.annotations.SerializedName
 

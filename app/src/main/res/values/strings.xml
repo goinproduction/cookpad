@@ -42,4 +42,5 @@
     </string-array>
 
     <string name="format_detail" translatable="false">%s %s</string>
+    <string name="my_cart">Giỏ hàng của bạn</string>
 </resources>

@@ -17,11 +17,6 @@
         android:title="@string/title_create" />
 
     <item
-        android:id="@+id/navigation_interaction"
-        android:icon="@drawable/state_ic_interaction"
-        android:title="@string/title_interact" />
-
-    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/state_ic_profile"
         android:title="@string/title_profile" />

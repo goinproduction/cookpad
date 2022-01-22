@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.paulbaker.cookpad.R
-import com.paulbaker.cookpad.data.datasource.local.Data
-import com.paulbaker.cookpad.data.datasource.local.SearchFoodResponse
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.databinding.ItemSearchBinding
 import com.paulbaker.library.core.extension.isNotNull
 import com.paulbaker.library.core.extension.isValidValue

@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.paulbaker.cookpad.core.extensions.Resource
+import com.paulbaker.cookpad.data.datasource.local.CartRecipesModel
 import com.paulbaker.cookpad.data.datasource.local.CreateRecipesModel
-import com.paulbaker.cookpad.data.datasource.local.Data
+import com.paulbaker.cookpad.data.datasource.remote.Data
 import com.paulbaker.cookpad.data.datasource.local.Payload
-import com.paulbaker.cookpad.data.datasource.remote.RecipesResponse
 import com.paulbaker.cookpad.data.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -53,7 +53,24 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
         }
     }
 
+    fun getCartUser(userId: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(productRepository.getCartUser(userId)))
+        } catch (ex: Exception) {
+            emit(Resource.error(null, ex.message ?: "Error"))
+        }
+    }
 
+
+    fun updateCartUser(userId: String, cartRecipesModel: CartRecipesModel) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(productRepository.updateCartUser(userId,cartRecipesModel)))
+        } catch (ex: Exception) {
+            emit(Resource.error(null, ex.message ?: "Error"))
+        }
+    }
 
     fun setProductItem(item: Data) {
         this.productItem.value = item

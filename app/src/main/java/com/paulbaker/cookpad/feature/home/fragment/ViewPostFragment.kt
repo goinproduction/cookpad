@@ -1,11 +1,13 @@
 package com.paulbaker.cookpad.feature.home.fragment
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -20,6 +22,8 @@ import com.google.gson.Gson
 import com.paulbaker.cookpad.HomeScreenActivity
 import com.paulbaker.cookpad.core.DATA_USER
 import com.paulbaker.cookpad.core.extensions.Status
+import com.paulbaker.cookpad.core.extensions.Strings
+import com.paulbaker.cookpad.data.datasource.local.CartRecipesModel
 import com.paulbaker.cookpad.data.datasource.local.User
 import com.paulbaker.cookpad.feature.home.adapter.StepViewPostAdapter
 
@@ -34,6 +38,7 @@ open class ViewPostFragment : Fragment(), View.OnClickListener {
     private var viewStepAdapter: StepViewPostAdapter? = null
 
     private var likeCount = 0
+    private var idFood = Strings.EMPTY
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,9 +57,18 @@ open class ViewPostFragment : Fragment(), View.OnClickListener {
         setupViewStepAdapter()
     }
 
+    private fun getIdUser(): String? {
+        val userID = requireContext().getSharedPreferences(DATA_USER, Context.MODE_PRIVATE)
+        return Gson().fromJson(
+            userID.getString(DATA_USER, Gson().toJson(User())),
+            User::class.java
+        ).id
+    }
+
     @SuppressLint("NotifyDataSetChanged")
      open fun setupObserverProductItem() {
         productViewModel.productItem.observe(viewLifecycleOwner) {
+            idFood = it.id.toString()
             binding.imgFood.layoutParams.height = Utils.getDeviceWidth(requireContext())
             binding.imgFood.setImageBitmap(
                 com.paulbaker.library.core.extension.Utils.decodeBase64ToBitMap(
@@ -124,6 +138,34 @@ open class ViewPostFragment : Fragment(), View.OnClickListener {
             }
             R.id.containerLike -> {
                 editRecipeLike()
+            }
+            R.id.btnCart ->{
+                updateCartUser()
+            }
+        }
+    }
+
+    private fun updateCartUser() {
+        productViewModel.updateCartUser(
+            userId = getIdUser() ?: Strings.EMPTY,
+            cartRecipesModel = CartRecipesModel(mutableListOf(idFood))
+        ).observe(viewLifecycleOwner) { resourceResponse ->
+            resourceResponse.let { resources ->
+                when (resources.status) {
+                    Status.LOADING -> {
+                        Toast.makeText(requireContext(), "Đang thêm vào giỏ của bạn ...", Toast.LENGTH_SHORT).show()
+                    }
+                    Status.SUCCESS -> {
+                        if (resources.data?.body()?.success == true) {
+                            Toast.makeText(requireContext(), resources.data.body()?.message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(requireContext(), resources.data?.body()?.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(requireContext(), "Có lỗi xảy ra vui lòng thử lại sau", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }
