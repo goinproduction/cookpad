@@ -286,7 +286,7 @@ class RecipeController {
   async getCartByUserId(req, res) {
     try {
       const userId = req.query.userId;
-      const response = await Cart.findOne({ userId }).populate("recipes").populate("recipes.userId").exec();
+      const response = await Cart.findOne({ userId }).populate({ path: 'recipes', populate: { path: 'author' } }).exec();
       if (response) {
         return res.status(200).json({
           message: "Lấy thông tin thành công!",
