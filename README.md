@@ -1,8 +1,7 @@
 # I/ PHẦN GIAO DIỆN(client)
 ### 1/ Mở source của project với Android Studio
 ### 2/ Trên thanh công cụ, chọn Build -> Build Bundles / APKs -> Build APK
-### 3/ Chờ 1 lúc cho quá trình build hoàn tất. Sau khi xong, sẽ có thông báo hiện ra ở
-góc dưới bên phải màn hình. Click vào locate để đi đến vị trí apk.
+### 3/ Chờ 1 lúc cho quá trình build hoàn tất. Sau khi xong, sẽ có thông báo hiện ra ở góc dưới bên phải màn hình. Click vào locate để đi đến vị trí apk.
 - Ngoài ra, trong link source nhóm em đã để sẵn apk, thầy có thể click vào để chạy luôn 
 mà không cần build lại ạ.
 
